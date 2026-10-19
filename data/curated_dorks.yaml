@@ -115,11 +115,11 @@ dorks:
   tags: src:proviesec
 - template: site:{target} filetype:sql password
   category: files
-  risk: medium
+  risk: high
   tags: src:proviesec
 - template: site:{target} inurl:dump.sql
   category: files
-  risk: medium
+  risk: high
   tags: src:proviesec
 - template: site:{target} inurl:database.sql
   category: files
@@ -465,61 +465,25 @@ dorks:
   category: files
   risk: medium
   tags: src:tc4dy; BACKUP files
-- template: site:{target} filetype:old
-  category: files
-  risk: medium
-  tags: src:tc4dy; Old file versions
-- template: site:{target} filetype:orig
-  category: files
-  risk: medium
-  tags: src:tc4dy; Original file copies
-- template: site:{target} filetype:save
-  category: files
-  risk: medium
-  tags: src:tc4dy; Saved file versions
-- template: site:{target} filetype:tar
-  category: files
-  risk: medium
-  tags: src:tc4dy; TAR archives
-- template: site:{target} filetype:zip
-  category: files
-  risk: medium
-  tags: src:tc4dy; ZIP backup files
-- template: site:{target} filetype:gz
-  category: files
-  risk: medium
-  tags: src:tc4dy; GZIP archives
-- template: site:{target} filetype:7z
-  category: files
-  risk: medium
-  tags: src:tc4dy; 7-Zip archives
-- template: site:{target} filetype:rar
-  category: files
-  risk: medium
-  tags: src:tc4dy; RAR archives
-- template: site:{target} filetype:tgz
-  category: files
-  risk: medium
-  tags: src:tc4dy; TGZ compressed archives
 - template: site:{target} inurl:backup.zip
   category: files
-  risk: medium
+  risk: high
   tags: src:tc4dy; Site backup ZIPs
 - template: site:{target} inurl:backup.tar
   category: files
-  risk: medium
+  risk: high
   tags: src:tc4dy; Site backup TARs
 - template: site:{target} inurl:backup.gz
   category: files
-  risk: medium
+  risk: high
   tags: src:tc4dy; GZ backups
 - template: site:{target} inurl:site.zip
   category: files
-  risk: medium
+  risk: high
   tags: src:tc4dy; Site archive ZIPs
 - template: site:{target} inurl:dump.sql.gz
   category: files
-  risk: medium
+  risk: high
   tags: src:tc4dy; Compressed SQL dumps
 - template: site:{target} intitle:"index of" backup
   category: files
@@ -529,26 +493,6 @@ dorks:
   category: files
   risk: medium
   tags: src:tc4dy; BAK file directories
-- template: site:{target} inurl:_bak
-  category: files
-  risk: medium
-  tags: src:tc4dy; Folders named _bak
-- template: site:{target} inurl:old
-  category: files
-  risk: medium
-  tags: src:tc4dy; Old version URLs
-- template: site:{target} inurl:.old
-  category: files
-  risk: medium
-  tags: src:tc4dy; URLs with .old extension
-- template: site:{target} inurl:archive
-  category: files
-  risk: medium
-  tags: src:tc4dy; Archive URL directories
-- template: site:{target} inurl:dump
-  category: files
-  risk: medium
-  tags: src:tc4dy; SQL dump files
 - template: site:{target} filetype:zip intext:config
   category: files
   risk: medium
@@ -563,16 +507,12 @@ dorks:
   tags: src:tc4dy; SQL backup files
 - template: site:{target} filetype:bak intext:password
   category: files
-  risk: medium
+  risk: high
   tags: src:tc4dy; BAK with passwords
 - template: site:{target} filetype:zip intext:password
   category: files
-  risk: medium
+  risk: high
   tags: src:tc4dy; ZIPs with passwords
-- template: filetype:zip site:{target}
-  category: files
-  risk: medium
-  tags: src:tc4dy; Education archives
 - template: site:{target} intext:"password" filetype:txt
   category: secrets
   risk: critical
@@ -1763,19 +1703,19 @@ dorks:
   tags: src:tc4dy; Dump file directories
 - template: site:{target} filetype:sql intext:"INSERT INTO"
   category: files
-  risk: medium
+  risk: high
   tags: src:tc4dy; SQL dumps with data
 - template: site:{target} filetype:sql intext:mysql
   category: files
-  risk: medium
+  risk: high
   tags: src:tc4dy; MySQL SQL files
 - template: site:{target} filetype:sql intext:backup
   category: files
-  risk: medium
+  risk: high
   tags: src:tc4dy; SQL backup dumps
 - template: site:{target} filetype:sql intext:password
   category: files
-  risk: medium
+  risk: high
   tags: src:tc4dy; SQL files with passwords
 - template: site:{target} filetype:sql intext:CREATE DATABASE
   category: files
@@ -1795,39 +1735,39 @@ dorks:
   tags: src:tc4dy; ALTER table SQL
 - template: site:{target} filetype:sql intext:username
   category: files
-  risk: medium
+  risk: high
   tags: src:tc4dy; SQL with usernames
 - template: site:{target} filetype:sql intext:email
   category: files
-  risk: medium
+  risk: high
   tags: src:tc4dy; SQL with emails
 - template: site:{target} filetype:sql intext:users
   category: files
-  risk: medium
+  risk: high
   tags: src:tc4dy; User table dumps
 - template: site:{target} filetype:mdb
   category: files
-  risk: medium
+  risk: high
   tags: src:tc4dy; MS Access databases
 - template: site:{target} filetype:db
   category: files
-  risk: medium
+  risk: high
   tags: src:tc4dy; SQLite DB files
 - template: site:{target} filetype:sqlite
   category: files
-  risk: medium
+  risk: high
   tags: src:tc4dy; SQLite files
 - template: site:{target} filetype:sqlite3
   category: files
-  risk: medium
+  risk: high
   tags: src:tc4dy; SQLite3 files
 - template: site:{target} filetype:accdb
   category: files
-  risk: medium
+  risk: high
   tags: src:tc4dy; MS Access ACCDB
 - template: site:{target} filetype:dbf
   category: files
-  risk: medium
+  risk: high
   tags: src:tc4dy; DBF database files
 - template: site:{target} filetype:json intext:mongodb
   category: files
@@ -1839,122 +1779,82 @@ dorks:
   tags: src:tc4dy; MongoDB documents
 - template: site:{target} inurl:backup.sql
   category: files
-  risk: medium
+  risk: high
   tags: src:tc4dy; SQL backup files
 - template: site:{target} inurl:data.sql
   category: files
-  risk: medium
+  risk: high
   tags: src:tc4dy; Data SQL files
 - template: site:{target} inurl:db.sql
   category: files
-  risk: medium
+  risk: high
   tags: src:tc4dy; DB SQL files
 - template: site:{target} filetype:log intext:error
-  category: files
+  category: errors
   risk: medium
   tags: src:tc4dy; Error log files
-- template: site:{target} filetype:log intext:warning
-  category: files
-  risk: medium
-  tags: src:tc4dy; Warning logs
 - template: site:{target} filetype:log intext:debug
-  category: files
+  category: errors
   risk: medium
   tags: src:tc4dy; Debug log files
 - template: site:{target} filetype:log intext:exception
-  category: files
+  category: errors
   risk: medium
   tags: src:tc4dy; Exception logs
 - template: site:{target} filetype:log intext:fatal
-  category: files
+  category: errors
   risk: medium
   tags: src:tc4dy; Fatal error logs
-- template: site:{target} filetype:log intext:access
-  category: files
-  risk: medium
-  tags: src:tc4dy; Access logs
 - template: site:{target} filetype:log intext:auth
-  category: files
-  risk: medium
+  category: errors
+  risk: high
   tags: src:tc4dy; Authentication logs
-- template: site:{target} filetype:log intext:apache
-  category: files
-  risk: medium
-  tags: src:tc4dy; Apache logs
-- template: site:{target} filetype:log intext:nginx
-  category: files
-  risk: medium
-  tags: src:tc4dy; Nginx logs
 - template: site:{target} filetype:log intext:ftp
-  category: files
+  category: errors
   risk: medium
   tags: src:tc4dy; FTP log files
 - template: site:{target} filetype:log intext:ssh
-  category: files
-  risk: medium
+  category: errors
+  risk: high
   tags: src:tc4dy; SSH log files
 - template: site:{target} filetype:log intext:mysql
-  category: files
+  category: errors
   risk: medium
   tags: src:tc4dy; MySQL logs
 - template: site:{target} filetype:log intext:php
-  category: files
+  category: errors
   risk: medium
   tags: src:tc4dy; PHP error logs
 - template: site:{target} filetype:log intext:sql
-  category: files
+  category: errors
   risk: medium
   tags: src:tc4dy; SQL logs
 - template: site:{target} filetype:log intext:password
-  category: files
-  risk: medium
+  category: errors
+  risk: high
   tags: src:tc4dy; Passwords in logs
 - template: site:{target} filetype:log intext:username
-  category: files
-  risk: medium
+  category: errors
+  risk: high
   tags: src:tc4dy; Usernames in logs
 - template: site:{target} filetype:log intext:login
-  category: files
-  risk: medium
+  category: errors
+  risk: high
   tags: src:tc4dy; Login activity logs
 - template: site:{target} filetype:log intext:failed
-  category: files
-  risk: medium
+  category: errors
+  risk: high
   tags: src:tc4dy; Failed login logs
-- template: site:{target} filetype:log intext:invalid
-  category: files
-  risk: medium
-  tags: src:tc4dy; Invalid user logs
-- template: site:{target} filetype:log intext:ip
-  category: files
-  risk: medium
-  tags: src:tc4dy; IP address logs
-- template: site:{target} filetype:log intext:user-agent
-  category: files
-  risk: medium
-  tags: src:tc4dy; UA string logs
-- template: site:{target} filetype:log intext:404
-  category: files
-  risk: medium
-  tags: src:tc4dy; 404 error logs
-- template: site:{target} filetype:log intext:500
-  category: files
-  risk: medium
-  tags: src:tc4dy; 500 error logs
-- template: site:{target} filetype:log intext:403
-  category: files
-  risk: medium
-  tags: src:tc4dy; Forbidden error logs
 - template: site:{target} intitle:"index of" "access.log"
-  category: files
+  category: errors
   risk: medium
   tags: src:tc4dy; Access log directories
 - template: site:{target} intitle:"index of" "error.log"
-  category: files
+  category: errors
   risk: medium
   tags: src:tc4dy; Error log directories
 - template: site:{target} inurl:access.log
-  category: files
+  category: errors
   risk: medium
   tags: src:tc4dy; Access log URLs
 - template: site:{target} intext:"mysql_fetch_array()"
@@ -2393,18 +2293,6 @@ dorks:
   category: cloud
   risk: high
   tags: src:tc4dy; Cloudflare R2 keys
-- template: site:{target} filetype:txt intext:CVE-202
-  category: files
-  risk: medium
-  tags: src:tc4dy; CVE text files
-- template: site:{target} filetype:pdf intext:Nessus
-  category: files
-  risk: medium
-  tags: src:tc4dy; Nessus scan reports
-- template: site:{target} filetype:pdf intext:OpenVAS
-  category: files
-  risk: medium
-  tags: src:tc4dy; OpenVAS reports
 - template: site:{target} filetype:pdf intext:"penetration test"
   category: files
   risk: medium
@@ -2421,34 +2309,6 @@ dorks:
   category: files
   risk: medium
   tags: src:tc4dy; PoC files
-- template: site:{target} inurl:burp
-  category: files
-  risk: medium
-  tags: src:tc4dy; Burp Suite reports
-- template: site:{target} inurl:nmap
-  category: files
-  risk: medium
-  tags: src:tc4dy; Nmap output files
-- template: site:{target} filetype:xml intext:nmap
-  category: files
-  risk: medium
-  tags: src:tc4dy; Nmap XML output
-- template: site:{target} intext:"sqlmap"
-  category: files
-  risk: medium
-  tags: src:tc4dy; SQLmap output
-- template: site:{target} intext:"metasploit"
-  category: files
-  risk: medium
-  tags: src:tc4dy; Metasploit outputs
-- template: site:{target} intext:"nikto"
-  category: files
-  risk: medium
-  tags: src:tc4dy; Nikto scan results
-- template: site:{target} intext:"hydra"
-  category: files
-  risk: medium
-  tags: src:tc4dy; Hydra outputs
 - template: site:{target} inurl:wp-content
   category: config
   risk: medium
