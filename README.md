@@ -41,7 +41,7 @@ cp .env.example .env
 
 ```bash
 uv run dork dorks import data/seed_dorks.yaml
-uv run dork dorks import data/curated_dorks.yaml   # ~650 curated dorks (see CREDITS.md)
+uv run dork dorks import data/curated_dorks.yaml   # ~640 curated dorks (see CREDITS.md)
 uv run dork targets add example.com --scope '*.example.com'
 uv run dork targets select example.com
 uv run dork scan --provider duckduckgo

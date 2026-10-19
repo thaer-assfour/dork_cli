@@ -2394,101 +2394,61 @@ dorks:
   risk: high
   tags: src:tc4dy; Cloudflare R2 keys
 - template: site:{target} filetype:txt intext:CVE-202
-  category: misc
-  risk: low
+  category: files
+  risk: medium
   tags: src:tc4dy; CVE text files
 - template: site:{target} filetype:pdf intext:Nessus
-  category: misc
-  risk: low
+  category: files
+  risk: medium
   tags: src:tc4dy; Nessus scan reports
 - template: site:{target} filetype:pdf intext:OpenVAS
-  category: misc
-  risk: low
+  category: files
+  risk: medium
   tags: src:tc4dy; OpenVAS reports
 - template: site:{target} filetype:pdf intext:"penetration test"
-  category: misc
-  risk: low
+  category: files
+  risk: medium
   tags: src:tc4dy; Pentest reports
 - template: site:{target} filetype:pdf intext:"vulnerability scan"
-  category: misc
-  risk: low
+  category: files
+  risk: medium
   tags: src:tc4dy; Vuln scan reports
 - template: site:{target} filetype:pdf intext:"security audit"
-  category: misc
-  risk: low
+  category: files
+  risk: medium
   tags: src:tc4dy; Security audits
-- template: site:{target} filetype:pdf intext:OWASP
-  category: misc
-  risk: low
-  tags: src:tc4dy; OWASP documents
-- template: site:{target} filetype:pdf intext:"risk assessment"
-  category: misc
-  risk: low
-  tags: src:tc4dy; Risk assessments
-- template: site:{target} filetype:pdf intext:"threat model"
-  category: misc
-  risk: low
-  tags: src:tc4dy; Threat models
 - template: site:{target} filetype:txt intext:"proof of concept"
-  category: misc
-  risk: low
+  category: files
+  risk: medium
   tags: src:tc4dy; PoC files
 - template: site:{target} inurl:burp
-  category: misc
-  risk: low
+  category: files
+  risk: medium
   tags: src:tc4dy; Burp Suite reports
-- template: site:{target} intitle:"Shodan"
-  category: misc
-  risk: low
-  tags: src:tc4dy; Shodan-related pages
 - template: site:{target} inurl:nmap
-  category: misc
-  risk: low
+  category: files
+  risk: medium
   tags: src:tc4dy; Nmap output files
 - template: site:{target} filetype:xml intext:nmap
-  category: misc
-  risk: low
+  category: files
+  risk: medium
   tags: src:tc4dy; Nmap XML output
 - template: site:{target} intext:"sqlmap"
-  category: misc
-  risk: low
+  category: files
+  risk: medium
   tags: src:tc4dy; SQLmap output
 - template: site:{target} intext:"metasploit"
-  category: misc
-  risk: low
+  category: files
+  risk: medium
   tags: src:tc4dy; Metasploit outputs
 - template: site:{target} intext:"nikto"
-  category: misc
-  risk: low
+  category: files
+  risk: medium
   tags: src:tc4dy; Nikto scan results
 - template: site:{target} intext:"hydra"
-  category: misc
-  risk: low
+  category: files
+  risk: medium
   tags: src:tc4dy; Hydra outputs
-- template: site:{target} filetype:pdf intext:"red team"
-  category: misc
-  risk: low
-  tags: src:tc4dy; Red team reports
-- template: site:{target} filetype:pdf intext:"blue team"
-  category: misc
-  risk: low
-  tags: src:tc4dy; Blue team reports
-- template: site:{target} filetype:pdf intext:"SOC report"
-  category: misc
-  risk: low
-  tags: src:tc4dy; SOC 2 reports
-- template: site:{target} filetype:pdf intext:"ISO 27001"
-  category: misc
-  risk: low
-  tags: src:tc4dy; ISO 27001 docs
-- template: site:{target} filetype:pdf intext:"PCI DSS"
-  category: misc
-  risk: low
-  tags: src:tc4dy; PCI DSS docs
-- template: site:{target} filetype:pdf intext:"NIST"
-  category: misc
-  risk: low
-  tags: src:tc4dy; NIST framework docs
 - template: site:{target} inurl:wp-content
   category: config
   risk: medium
