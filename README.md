@@ -7,8 +7,10 @@ analysis to Claude running in-session.
 1. **Find targets** (`dork targets`) - discover self-hosted / independent VDP
    programs from disclose.io and `security.txt`, or add your own. You choose
    which targets to keep and scan.
-2. **Manage dorks** (`dork dorks`) - import, add, enable/disable a library of
-   dork templates (each uses `{target}` for the host).
+2. **Manage dorks** (`dork dorks`) - import, add, edit, delete, enable/disable a
+   library of dork templates (each uses `{target}` for the host), and `fetch`
+   external dork feeds (URL or file: JSON, CSV, or one-per-line) with
+   auto-categorization, e.g. a GHDB export.
 3. **Scan** (`dork scan`) - run every enabled dork against every selected
    target, within authorized scope, through a pluggable search provider, and
    store the hits.

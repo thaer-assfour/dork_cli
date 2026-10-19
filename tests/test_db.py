@@ -29,6 +29,18 @@ def test_dork_add_and_filter(tmp_path):
         assert db.list_dorks(category="panels")[0].enabled is False
 
 
+def test_dork_edit_and_delete(tmp_path):
+    with make_db(tmp_path) as db:
+        did = db.add_dork(Dork(template="site:{target} ext:env", category="secrets"))
+        assert db.update_dork(did, risk="critical", category="config") == 1
+        d = db.get_dork(did)
+        assert d.risk == "critical" and d.category == "config"
+        # no-op update changes nothing
+        assert db.update_dork(did) == 0
+        assert db.delete_dork(did) == 1
+        assert db.get_dork(did) is None
+
+
 def test_scan_results_and_cache(tmp_path):
     with make_db(tmp_path) as db:
         tid = db.upsert_target(Target(domain="example.com"))

@@ -96,6 +96,36 @@ class Database:
         self.conn.commit()
         return cur.rowcount
 
+    def get_dork(self, dork_id: int) -> Dork | None:
+        row = self.conn.execute(
+            "SELECT * FROM dorks WHERE id=?", (dork_id,)
+        ).fetchone()
+        return Dork.from_row(row) if row else None
+
+    def update_dork(self, dork_id: int, *, template: str | None = None,
+                    category: str | None = None, risk: str | None = None,
+                    tags: str | None = None) -> int:
+        """Update fields of an existing dork in place. Only given fields change."""
+        sets, params = [], []
+        for col, val in (("template", template), ("category", category),
+                         ("risk", risk), ("tags", tags)):
+            if val is not None:
+                sets.append(f"{col}=?")
+                params.append(val)
+        if not sets:
+            return 0
+        params.append(dork_id)
+        cur = self.conn.execute(
+            f"UPDATE dorks SET {', '.join(sets)} WHERE id=?", params
+        )
+        self.conn.commit()
+        return cur.rowcount
+
+    def delete_dork(self, dork_id: int) -> int:
+        cur = self.conn.execute("DELETE FROM dorks WHERE id=?", (dork_id,))
+        self.conn.commit()
+        return cur.rowcount
+
     def list_dorks(self, enabled_only: bool = False,
                    category: str | None = None) -> list[Dork]:
         sql = "SELECT * FROM dorks"

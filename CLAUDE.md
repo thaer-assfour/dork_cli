@@ -13,7 +13,9 @@ one SQLite database; Claude analyzes the results in-session (method one).
 ## Commands
 
 - `uv run dork targets discover|add|list|select|unselect`
-- `uv run dork dorks import|add|list|enable|disable`
+- `uv run dork dorks import|add|list|edit|delete|enable|disable|fetch`
+  (`fetch <url-or-file>` imports an external dork feed, e.g. a GHDB export,
+  auto-categorized; `edit`/`delete` modify a dork in place)
 - `uv run dork scan [--provider --num --category --yes --no-cache --note]`
 - `uv run dork triage show|set|report`
 

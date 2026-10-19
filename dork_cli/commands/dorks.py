@@ -74,6 +74,103 @@ def list_dorks(
 
 
 @app.command()
+def edit(
+    dork_id: int = typer.Argument(..., help="Dork ID to modify."),
+    template: str = typer.Option(None, "--template", "-t",
+                                 help="New template (use {target})."),
+    category: str = typer.Option(None, "--category", "-c"),
+    risk: str = typer.Option(None, "--risk", "-r"),
+    tags: str = typer.Option(None, "--tags"),
+):
+    """Edit an existing dork in place. Only the options you pass change."""
+    cfg = get_config()
+    with Database(cfg.db_path) as db:
+        current = db.get_dork(dork_id)
+        if not current:
+            console.print(f"[red]dork {dork_id} not found[/red]")
+            raise typer.Exit(1)
+        n = db.update_dork(dork_id, template=template, category=category,
+                           risk=risk, tags=tags)
+        if not n:
+            console.print("[yellow]nothing to change (no options given)[/yellow]")
+            raise typer.Exit()
+        updated = db.get_dork(dork_id)
+    console.print(f"[green]updated dork {dork_id}[/green]")
+    console.print(dorks_table([updated]))
+
+
+@app.command()
+def delete(
+    dork_id: int = typer.Argument(..., help="Dork ID to delete."),
+    yes: bool = typer.Option(False, "--yes", "-y", help="Skip confirmation."),
+):
+    """Delete a dork. This also removes its stored results (cascade)."""
+    cfg = get_config()
+    with Database(cfg.db_path) as db:
+        current = db.get_dork(dork_id)
+        if not current:
+            console.print(f"[red]dork {dork_id} not found[/red]")
+            raise typer.Exit(1)
+        console.print(dorks_table([current]))
+        if not yes and not typer.confirm(
+            "Delete this dork and its results?", default=False
+        ):
+            raise typer.Abort()
+        db.delete_dork(dork_id)
+    console.print(f"[green]deleted dork {dork_id}[/green]")
+
+
+@app.command()
+def fetch(
+    source: str = typer.Argument(
+        ..., help="URL or local file of a dork feed (JSON / CSV / one-per-line)."
+    ),
+    fmt: str = typer.Option("auto", "--format", "-f",
+                            help="auto | json | csv | lines"),
+    risk: str = typer.Option("medium", "--risk", "-r",
+                             help="Default risk when the feed has none."),
+    label: str = typer.Option(None, "--label",
+                              help="Source label stored on each dork."),
+    dry_run: bool = typer.Option(False, "--dry-run",
+                                 help="Show what would be imported, save nothing."),
+):
+    """Fetch and import dorks from an external feed (e.g. a GHDB export).
+
+    Templates are normalized to use {target} and auto-categorized by their
+    operators when the feed gives no category.
+    """
+    from ..sources import dork_feeds
+
+    cfg = get_config()
+    try:
+        text = dork_feeds.load_text(source)
+    except Exception as exc:
+        console.print(f"[red]could not load feed:[/red] {exc}")
+        raise typer.Exit(1)
+
+    entries = dork_feeds.parse_feed(text, fmt=fmt)
+    if not entries:
+        console.print("[yellow]no dorks parsed from feed[/yellow]")
+        raise typer.Exit()
+
+    label = label or source
+    dorks = dork_feeds.feed_to_dorks(entries, source_label=label, default_risk=risk)
+    console.print(f"[cyan]parsed {len(dorks)} dork(s) from {source}[/cyan]")
+    console.print(dorks_table(dorks[:20]))
+    if len(dorks) > 20:
+        console.print(f"... and {len(dorks) - 20} more")
+
+    if dry_run:
+        console.print("[yellow]dry run: nothing saved[/yellow]")
+        raise typer.Exit()
+
+    with Database(cfg.db_path) as db:
+        for d in dorks:
+            db.add_dork(d)
+    console.print(f"[green]imported {len(dorks)} dork(s).[/green]")
+
+
+@app.command()
 def enable(dork_id: int = typer.Argument(...)):
     """Enable a dork by ID."""
     cfg = get_config()
