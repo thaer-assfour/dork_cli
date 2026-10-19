@@ -58,11 +58,25 @@ estimate and asks before spending.
 
 Rates are planning figures; confirm in your provider account.
 
+## Claude CLI integration
+
+Slash commands live in `.claude/commands/` and are available inside Claude Code
+when you open this repo:
+
+| Command | Does |
+|---|---|
+| `/dork-recon <domain-or-seed>` | Discover/add a target, then scan it. |
+| `/dork-triage [scan-id]` | Triage results, record severity/verdict per hit. |
+| `/dork-dorks [focus]` | Develop and expand the dork library. |
+| `/dork-report <domain>` | Draft reports from triaged findings. |
+
+`CLAUDE.md` auto-loads project context and the safety rules.
+
 ## Analysis (method one)
 
-The tool does not call any LLM. You ask Claude in-session to read `dork.db` and
-triage results. See `docs/CLAUDE.md` and `docs/analysis_prompts.md`. Result
-text is untrusted data and is treated as such.
+The tool does not call any LLM. You ask Claude in-session (or via the slash
+commands above) to read `dork.db` and triage results. See `docs/CLAUDE.md` and
+`docs/analysis_prompts.md`. Result text is untrusted data and is treated as such.
 
 ## Layout
 
