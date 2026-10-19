@@ -629,18 +629,6 @@ dorks:
   category: secrets
   risk: high
   tags: src:tc4dy; Password hashes
-- template: site:{target} intext:"MD5 hash"
-  category: secrets
-  risk: high
-  tags: src:tc4dy; MD5 hashes
-- template: site:{target} intext:"SHA1 hash"
-  category: secrets
-  risk: high
-  tags: src:tc4dy; SHA1 hashes
-- template: site:{target} intext:"bcrypt"
-  category: secrets
-  risk: high
-  tags: src:tc4dy; Bcrypt hashes
 - template: site:{target} intext:"shadow" filetype:txt
   category: secrets
   risk: high
@@ -677,10 +665,6 @@ dorks:
   category: secrets
   risk: high
   tags: src:tc4dy; Access tokens
-- template: site:{target} intext:bearer
-  category: secrets
-  risk: high
-  tags: src:tc4dy; Bearer tokens
 - template: 'site:{target} intext:"Authorization: Bearer"'
   category: secrets
   risk: high
@@ -693,10 +677,6 @@ dorks:
   category: secrets
   risk: critical
   tags: src:tc4dy; AWS secret keys
-- template: site:{target} intext:AKID
-  category: secrets
-  risk: high
-  tags: src:tc4dy; AWS key format
 - template: site:{target} intext:AKIA
   category: secrets
   risk: high
@@ -757,26 +737,6 @@ dorks:
   category: secrets
   risk: high
   tags: src:tc4dy; Slack token ENV
-- template: site:{target} intext:"twilio"
-  category: secrets
-  risk: high
-  tags: src:tc4dy; Twilio API keys
-- template: site:{target} intext:"sendgrid"
-  category: secrets
-  risk: high
-  tags: src:tc4dy; SendGrid keys
-- template: site:{target} intext:"mailgun"
-  category: secrets
-  risk: high
-  tags: src:tc4dy; Mailgun keys
-- template: site:{target} intext:"mailchimp"
-  category: secrets
-  risk: high
-  tags: src:tc4dy; Mailchimp keys
-- template: site:{target} intext:firebase
-  category: secrets
-  risk: high
-  tags: src:tc4dy; Firebase keys
 - template: site:{target} intext:"FIREBASE_API_KEY"
   category: secrets
   risk: high
@@ -793,70 +753,14 @@ dorks:
   category: secrets
   risk: high
   tags: src:tc4dy; Azure client IDs
-- template: site:{target} intext:heroku
-  category: secrets
-  risk: high
-  tags: src:tc4dy; Heroku API keys
-- template: site:{target} intext:paypal
-  category: secrets
-  risk: high
-  tags: src:tc4dy; PayPal secrets
-- template: site:{target} intext:shopify
-  category: secrets
-  risk: high
-  tags: src:tc4dy; Shopify keys
-- template: site:{target} intext:twitter
-  category: secrets
-  risk: high
-  tags: src:tc4dy; Twitter API keys
 - template: site:{target} intext:"consumer_secret"
   category: secrets
   risk: high
   tags: src:tc4dy; Consumer secrets
-- template: site:{target} intext:facebook
-  category: secrets
-  risk: high
-  tags: src:tc4dy; Facebook secrets
-- template: site:{target} intext:instagram
-  category: secrets
-  risk: high
-  tags: src:tc4dy; Instagram tokens
-- template: site:{target} intext:linkedin
-  category: secrets
-  risk: high
-  tags: src:tc4dy; LinkedIn secrets
-- template: site:{target} intext:openai
-  category: secrets
-  risk: high
-  tags: src:tc4dy; OpenAI keys
 - template: site:{target} intext:"sk-"
   category: secrets
   risk: high
   tags: src:tc4dy; OpenAI-style keys
-- template: site:{target} intext:anthropic
-  category: secrets
-  risk: high
-  tags: src:tc4dy; Anthropic API keys
-- template: site:{target} intext:cloudflare
-  category: secrets
-  risk: high
-  tags: src:tc4dy; Cloudflare keys
-- template: site:{target} intext:digitalocean
-  category: secrets
-  risk: high
-  tags: src:tc4dy; DigitalOcean tokens
-- template: site:{target} intext:linode
-  category: secrets
-  risk: high
-  tags: src:tc4dy; Linode keys
-- template: site:{target} intext:vultr
-  category: secrets
-  risk: high
-  tags: src:tc4dy; Vultr API keys
-- template: site:{target} intext:jwt
-  category: secrets
-  risk: high
-  tags: src:tc4dy; JWT secrets
 - template: site:{target} intext:"JWT_SECRET"
   category: secrets
   risk: critical
@@ -1239,23 +1143,23 @@ dorks:
   tags: src:tc4dy; Magento admin
 - template: site:{target} intitle:"Tomcat" inurl:manager
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; Tomcat manager
 - template: site:{target} intitle:"Jenkins"
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; Jenkins dashboard
 - template: site:{target} intitle:"Kibana"
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; Kibana admin
 - template: site:{target} intitle:"Grafana"
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; Grafana login
 - template: site:{target} intitle:"Portainer"
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; Portainer Docker admin
 - template: site:{target} inurl:sign-in
   category: panels
@@ -1331,7 +1235,7 @@ dorks:
   tags: src:tc4dy; Sign in pages
 - template: site:{target} intext:"username" intext:"password" inurl:login
   category: panels
-  risk: critical
+  risk: medium
   tags: src:tc4dy; Login forms
 - template: site:{target} inurl:login intext:"forgot password"
   category: panels
@@ -1365,85 +1269,65 @@ dorks:
   category: panels
   risk: medium
   tags: src:tc4dy; Remote access login
-- template: site:{target} inurl:rdp/login
-  category: panels
-  risk: medium
-  tags: src:tc4dy; RDP login
-- template: site:{target} inurl:ssh/login
-  category: panels
-  risk: medium
-  tags: src:tc4dy; SSH web login
 - template: site:{target} inurl:phpmyadmin
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; phpMyAdmin panels
 - template: site:{target} intitle:phpMyAdmin
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; PMA page titles
 - template: site:{target} inurl:phpmyadmin/index.php
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; PMA login
 - template: site:{target} intitle:"phpMyAdmin" intext:"Welcome to"
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; PMA welcome page
 - template: site:{target} inurl:db/phpmyadmin
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; DB admin paths
 - template: site:{target} inurl:phpmyadmin/setup
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; PMA setup page
 - template: site:{target} intitle:adminer
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; Adminer DB admin
 - template: site:{target} inurl:adminer.php
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; Adminer PHP
 - template: site:{target} inurl:adminer
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; Adminer panels
 - template: site:{target} intitle:"SQL Server" inurl:asp
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; SQL Server web
 - template: site:{target} intitle:"MongoDB" inurl:28017
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; MongoDB HTTP
-- template: site:{target} inurl:27017
-  category: panels
-  risk: medium
-  tags: src:tc4dy; MongoDB default port
-- template: site:{target} inurl:5432
-  category: panels
-  risk: medium
-  tags: src:tc4dy; PostgreSQL port
-- template: site:{target} inurl:3306
-  category: panels
-  risk: medium
-  tags: src:tc4dy; MySQL port URLs
 - template: site:{target} intitle:"Cassandra" inurl:admin
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; Cassandra admin
 - template: site:{target} intitle:"Redis" inurl:admin
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; Redis admin
 - template: site:{target} intitle:"Elasticsearch"
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; Elasticsearch UI
 - template: site:{target} inurl:elasticsearch
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; Elasticsearch URLs
 - template: site:{target} inurl:_cat/indices
   category: panels
@@ -1451,47 +1335,31 @@ dorks:
   tags: src:tc4dy; Elasticsearch indices
 - template: site:{target} inurl:kibana
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; Kibana dashboards
 - template: site:{target} intitle:"RabbitMQ"
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; RabbitMQ mgmt
 - template: site:{target} inurl:rabbitmq
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; RabbitMQ URLs
 - template: site:{target} inurl:cpanel
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; cPanel panels
 - template: site:{target} intitle:cpanel
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; cPanel login
-- template: site:{target} inurl:2082
-  category: panels
-  risk: medium
-  tags: src:tc4dy; cPanel port 2082
-- template: site:{target} inurl:2083
-  category: panels
-  risk: medium
-  tags: src:tc4dy; cPanel SSL port
-- template: site:{target} inurl:2086
-  category: panels
-  risk: medium
-  tags: src:tc4dy; WHM port
-- template: site:{target} inurl:2087
-  category: panels
-  risk: medium
-  tags: src:tc4dy; WHM SSL port
 - template: site:{target} inurl:whm
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; WHM panels
 - template: site:{target} intitle:"WHM"
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; WHM page titles
 - template: site:{target} inurl:webmail
   category: panels
@@ -1503,63 +1371,55 @@ dorks:
   tags: src:tc4dy; Webmail pages
 - template: site:{target} intitle:plesk
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; Plesk panels
 - template: site:{target} inurl:plesk
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; Plesk URLs
 - template: site:{target} intitle:directadmin
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; DirectAdmin
 - template: site:{target} inurl:directadmin
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; DirectAdmin URLs
 - template: site:{target} intitle:ispconfig
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; ISPConfig panels
 - template: site:{target} inurl:ispconfig
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; ISPConfig URLs
 - template: site:{target} intitle:"Webmin"
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; Webmin panels
 - template: site:{target} inurl:webmin
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; Webmin URLs
-- template: site:{target} inurl:10000
-  category: panels
-  risk: medium
-  tags: src:tc4dy; Webmin port
 - template: site:{target} intitle:"VirtualMin"
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; VirtualMin panels
 - template: site:{target} inurl:virtualmin
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; VirtualMin URLs
 - template: site:{target} intitle:"HestiaCP"
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; HestiaCP panels
-- template: site:{target} inurl:8083
-  category: panels
-  risk: medium
-  tags: src:tc4dy; HestiaCP port
 - template: site:{target} intitle:"Froxlor"
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; Froxlor panels
 - template: site:{target} inurl:froxlor
   category: panels
-  risk: medium
+  risk: high
   tags: src:tc4dy; Froxlor URLs
 - template: site:{target} intitle:"index of /"
   category: exposure
