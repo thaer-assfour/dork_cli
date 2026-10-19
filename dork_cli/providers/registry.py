@@ -24,5 +24,10 @@ def get_provider(cfg: Config, override: str | None = None) -> SearchProvider:
             f"Unknown provider '{name}'. Available: {', '.join(available_providers())}"
         )
     if name == SerperProvider.name:
-        return SerperProvider(api_key=cfg.serper_api_key or "")
+        # Queries Serper's free tier refuses (intext:/allintext:) are routed
+        # to DuckDuckGo instead of failing the dork.
+        return SerperProvider(
+            api_key=cfg.serper_api_key or "",
+            fallback=DuckDuckGoProvider(),
+        )
     return DuckDuckGoProvider()
