@@ -1,0 +1,71 @@
+# Seed dork library. Templates use {target} for the host; if omitted, scan
+# prepends "site:{target}" automatically so every query stays scoped.
+# Categories: exposure, panels, secrets, config, errors, files, vcs, cloud
+dorks:
+  # --- Exposed listings / backups -------------------------------------
+  - template: 'site:{target} intitle:"index of"'
+    category: exposure
+    risk: medium
+  - template: 'site:{target} intitle:"index of" (backup OR bak OR old OR dump)'
+    category: exposure
+    risk: high
+  - template: 'site:{target} ext:sql OR ext:db OR ext:sqlite'
+    category: files
+    risk: high
+
+  # --- Config / secrets -----------------------------------------------
+  - template: 'site:{target} ext:env OR filename:.env'
+    category: secrets
+    risk: critical
+  - template: 'site:{target} ext:log'
+    category: files
+    risk: medium
+  - template: 'site:{target} ext:yaml OR ext:yml OR ext:ini OR ext:conf'
+    category: config
+    risk: medium
+  - template: 'site:{target} "api_key" OR "apikey" OR "client_secret"'
+    category: secrets
+    risk: high
+
+  # --- Login / admin panels -------------------------------------------
+  - template: 'site:{target} inurl:admin OR inurl:login OR inurl:dashboard'
+    category: panels
+    risk: medium
+  - template: 'site:{target} intitle:"phpMyAdmin"'
+    category: panels
+    risk: high
+  - template: 'site:{target} intitle:"Grafana" inurl:login'
+    category: panels
+    risk: medium
+
+  # --- Errors / debug -------------------------------------------------
+  - template: 'site:{target} "Whoops, looks like something went wrong"'
+    category: errors
+    risk: medium
+  - template: 'site:{target} "stack trace" OR "Traceback (most recent call last)"'
+    category: errors
+    risk: medium
+  - template: 'site:{target} intext:"sql syntax near" OR intext:"ORA-00933"'
+    category: errors
+    risk: high
+
+  # --- Version control / source ---------------------------------------
+  - template: 'site:{target} inurl:.git'
+    category: vcs
+    risk: high
+  - template: 'site:{target} ext:bak OR ext:swp OR ext:old'
+    category: files
+    risk: medium
+
+  # --- Documents / data -----------------------------------------------
+  - template: 'site:{target} ext:xls OR ext:xlsx OR ext:csv'
+    category: files
+    risk: medium
+  - template: 'site:{target} "confidential" ext:pdf'
+    category: files
+    risk: medium
+
+  # --- Cloud / storage ------------------------------------------------
+  - template: 'site:{target} inurl:s3.amazonaws.com'
+    category: cloud
+    risk: medium
