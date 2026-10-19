@@ -171,6 +171,66 @@ def fetch(
 
 
 @app.command()
+def ghdb(
+    category: str = typer.Option(
+        None, "--category", "-c",
+        help="Only import a GHDB category (exact cat_title, e.g. "
+             "'Files Containing Passwords').",
+    ),
+    limit: int = typer.Option(None, "--limit", "-l",
+                              help="Import at most this many dorks."),
+    url: str = typer.Option(None, "--url", help="Override the GHDB endpoint."),
+    insecure: bool = typer.Option(
+        False, "--insecure",
+        help="Skip TLS verification (fallback if the cert chain fails).",
+    ),
+    dry_run: bool = typer.Option(False, "--dry-run",
+                                 help="Show what would be imported, save nothing."),
+):
+    """Import dorks straight from the Exploit-DB Google Hacking Database.
+
+    Fetches the GHDB JSON, extracts each dork, maps its GHDB category to an
+    internal one (keeping the GHDB title as a tag), and normalizes it to a
+    {target}-based template.
+    """
+    from ..sources import ghdb as ghdb_src
+
+    cfg = get_config()
+    endpoint = url or ghdb_src.GHDB_URL
+    console.print(f"[cyan]Fetching GHDB from {endpoint} ...[/cyan]")
+    try:
+        dorks = ghdb_src.load_ghdb_dorks(
+            url=endpoint, verify=not insecure,
+            category_filter=category, limit=limit,
+        )
+    except Exception as exc:
+        console.print(f"[red]GHDB fetch failed:[/red] {exc}")
+        console.print(
+            "If this host is blocked or the cert chain fails, try again from a "
+            "network that can reach exploit-db.com, or pass --insecure."
+        )
+        raise typer.Exit(1)
+
+    if not dorks:
+        console.print("[yellow]no dorks parsed from GHDB[/yellow]")
+        raise typer.Exit()
+
+    console.print(f"[cyan]parsed {len(dorks)} GHDB dork(s)[/cyan]")
+    console.print(dorks_table(dorks[:20]))
+    if len(dorks) > 20:
+        console.print(f"... and {len(dorks) - 20} more")
+
+    if dry_run:
+        console.print("[yellow]dry run: nothing saved[/yellow]")
+        raise typer.Exit()
+
+    with Database(cfg.db_path) as db:
+        for d in dorks:
+            db.add_dork(d)
+    console.print(f"[green]imported {len(dorks)} GHDB dork(s).[/green]")
+
+
+@app.command()
 def enable(dork_id: int = typer.Argument(...)):
     """Enable a dork by ID."""
     cfg = get_config()

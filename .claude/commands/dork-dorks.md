@@ -18,9 +18,11 @@ Help me develop the dork library. Focus (optional): `$ARGUMENTS`.
    - improve an existing one in place: `uv run dork dorks edit <id> --template '<new>' --category <cat> --risk <risk>`
    - remove a weak or duplicate one: `uv run dork dorks delete <id>` (this also
      drops that dork's stored results; confirm with me first)
-5. If I point you at an external dork feed (URL or file, e.g. a GHDB export),
-   import it with `uv run dork dorks fetch <source> --dry-run` first, review the
-   parsed/auto-categorized output with me, then re-run without `--dry-run`.
+5. To pull from the Exploit-DB Google Hacking Database, use the dedicated
+   importer: `uv run dork dorks ghdb --dry-run` (optionally `--category "<GHDB
+   cat_title>"` or `--limit N`), review the parsed/categorized output with me,
+   then re-run without `--dry-run`. For any other external feed (URL or file),
+   use `uv run dork dorks fetch <source> --dry-run` the same way.
 
 Keep templates scoped: they should constrain to the target host via `{target}`
 or a `site:` operator. Do not propose dorks that target hosts outside an

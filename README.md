@@ -10,7 +10,8 @@ analysis to Claude running in-session.
 2. **Manage dorks** (`dork dorks`) - import, add, edit, delete, enable/disable a
    library of dork templates (each uses `{target}` for the host), and `fetch`
    external dork feeds (URL or file: JSON, CSV, or one-per-line) with
-   auto-categorization, e.g. a GHDB export.
+   auto-categorization. `dork dorks ghdb` imports straight from the Exploit-DB
+   Google Hacking Database (GHDB), mapping its categories automatically.
 3. **Scan** (`dork scan`) - run every enabled dork against every selected
    target, within authorized scope, through a pluggable search provider, and
    store the hits.
