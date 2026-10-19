@@ -1,0 +1,2603 @@
+# Curated dork library, extracted once from two community sources.
+# Sources & licenses (attribution required where noted):
+#   - Proviesec/google-dorks  (lists: CC-BY-4.0)   https://github.com/Proviesec/google-dorks
+#   - tc4dy/GoogleDorkArchive  (MIT)                https://github.com/tc4dy/GoogleDorkArchive
+# Templates normalized to {target}; categories/risk mapped to our schema.
+# Import with: uv run dork dorks import data/curated_dorks.yaml
+dorks:
+- template: site:{target} inurl:.env
+  category: secrets
+  risk: critical
+  tags: src:proviesec
+- template: site:{target} filetype:env "PASSWORD"
+  category: secrets
+  risk: critical
+  tags: src:proviesec
+- template: site:{target} filetype:env "SECRET"
+  category: secrets
+  risk: critical
+  tags: src:proviesec
+- template: site:{target} filetype:env "API_KEY"
+  category: secrets
+  risk: critical
+  tags: src:proviesec
+- template: site:{target} filetype:env "TOKEN"
+  category: secrets
+  risk: critical
+  tags: src:proviesec
+- template: site:{target} inurl:config.php "DB_PASSWORD"
+  category: secrets
+  risk: critical
+  tags: src:proviesec
+- template: site:{target} inurl:config.php "DB_USER"
+  category: secrets
+  risk: high
+  tags: src:proviesec
+- template: site:{target} inurl:config.php password
+  category: secrets
+  risk: high
+  tags: src:proviesec
+- template: site:{target} inurl:config.php secret
+  category: secrets
+  risk: high
+  tags: src:proviesec
+- template: site:{target} inurl:settings.php password
+  category: secrets
+  risk: high
+  tags: src:proviesec
+- template: site:{target} inurl:configuration.php password
+  category: secrets
+  risk: high
+  tags: src:proviesec
+- template: site:{target} "BEGIN RSA PRIVATE KEY"
+  category: secrets
+  risk: critical
+  tags: src:proviesec
+- template: site:{target} "BEGIN OPENSSH PRIVATE KEY"
+  category: secrets
+  risk: critical
+  tags: src:proviesec
+- template: site:{target} filetype:pem "PRIVATE KEY"
+  category: secrets
+  risk: critical
+  tags: src:proviesec
+- template: site:{target} filetype:env "AWS_ACCESS_KEY_ID"
+  category: cloud
+  risk: critical
+  tags: src:proviesec
+- template: site:{target} filetype:env "AWS_SECRET_ACCESS_KEY"
+  category: cloud
+  risk: critical
+  tags: src:proviesec
+- template: site:{target} filetype:json "service_account" "private_key"
+  category: cloud
+  risk: critical
+  tags: src:proviesec
+- template: site:{target} intitle:"Jenkins" inurl:/login
+  category: cloud
+  risk: high
+  tags: src:proviesec
+- template: site:{target} intitle:"GitLab" inurl:/users/sign_in
+  category: cloud
+  risk: high
+  tags: src:proviesec
+- template: site:{target} intitle:"Grafana" inurl:/login
+  category: cloud
+  risk: high
+  tags: src:proviesec
+- template: site:{target} intitle:"Kibana" inurl:/login
+  category: cloud
+  risk: high
+  tags: src:proviesec
+- template: site:{target} inurl:backup
+  category: files
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} inurl:backups
+  category: files
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} filetype:zip backup
+  category: files
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} filetype:tar backup
+  category: files
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} filetype:gz backup
+  category: files
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} filetype:sql
+  category: files
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} filetype:sql password
+  category: files
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} inurl:dump.sql
+  category: files
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} inurl:database.sql
+  category: files
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} filetype:log
+  category: errors
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} filetype:log password
+  category: errors
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} filetype:log "Authorization:"
+  category: errors
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} filetype:log "Set-Cookie"
+  category: errors
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} inurl:debug.log
+  category: errors
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} inurl:error.log
+  category: errors
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} "Fatal error" "on line"
+  category: errors
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} "Exception" "stack trace"
+  category: errors
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} inurl:login
+  category: panels
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} inurl:signin
+  category: panels
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} inurl:admin/login
+  category: panels
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} inurl:auth/login
+  category: panels
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} intitle:"Admin Login"
+  category: panels
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} inurl:& intext:admin intext:login
+  category: panels
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} inurl:swagger.json
+  category: panels
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} inurl:openapi.json
+  category: panels
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} inurl:api-docs
+  category: panels
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} inurl:/graphql
+  category: panels
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} intitle:"GraphQL Playground"
+  category: panels
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} inurl:/graphiql
+  category: panels
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} intitle:"Index of" ".env"
+  category: exposure
+  risk: critical
+  tags: src:proviesec
+- template: site:{target} intitle:"Index of" "config"
+  category: exposure
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} intitle:"Index of" "backup"
+  category: exposure
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} intitle:"Index of" ".git"
+  category: exposure
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} inurl:.git/config
+  category: vcs
+  risk: high
+  tags: src:proviesec
+- template: site:{target} inurl:.git/HEAD
+  category: vcs
+  risk: high
+  tags: src:proviesec
+- template: site:{target} filetype:map "webpack://"
+  category: vcs
+  risk: high
+  tags: src:proviesec
+- template: site:{target} filetype:xml "password"
+  category: vcs
+  risk: critical
+  tags: src:proviesec
+- template: site:{target} filetype:xml "secret"
+  category: vcs
+  risk: high
+  tags: src:proviesec
+- template: site:{target} hostname user password filetype:xml
+  category: vcs
+  risk: high
+  tags: src:proviesec
+- template: site:{target} inurl:Makefile.toml
+  category: config
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} inurl:docker-compose.yml
+  category: config
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} filetype:yml password
+  category: config
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} filetype:yaml secret
+  category: config
+  risk: medium
+  tags: src:proviesec
+- template: site:{target} filetype:env "DB_PASSWORD"
+  category: secrets
+  risk: critical
+  tags: src:proviesec
+- template: site:{target} filetype:env "DATABASE_URL"
+  category: secrets
+  risk: critical
+  tags: src:proviesec
+- template: site:{target} filetype:env "REDIS_URL"
+  category: secrets
+  risk: critical
+  tags: src:proviesec
+- template: site:{target} filetype:env "JWT_SECRET"
+  category: secrets
+  risk: critical
+  tags: src:proviesec
+- template: site:{target} filetype:env "OPENAI_API_KEY"
+  category: secrets
+  risk: critical
+  tags: src:proviesec
+- template: site:{target} filetype:env "OPENAI_KEY"
+  category: secrets
+  risk: critical
+  tags: src:proviesec
+- template: site:{target} filetype:env "HUGGINGFACE_API_KEY"
+  category: secrets
+  risk: critical
+  tags: src:proviesec
+- template: site:{target} filetype:env "HUGGINGFACEHUB_API_TOKEN"
+  category: secrets
+  risk: critical
+  tags: src:proviesec
+- template: site:{target} filetype:env "REPLICATE_API_TOKEN"
+  category: secrets
+  risk: critical
+  tags: src:proviesec
+- template: site:{target} filetype:txt intext:password
+  category: config
+  risk: medium
+  tags: src:tc4dy; TXT with passwords
+- template: site:{target} filetype:txt intext:credentials
+  category: config
+  risk: medium
+  tags: src:tc4dy; Credential files
+- template: site:{target} filetype:txt intext:username
+  category: config
+  risk: medium
+  tags: src:tc4dy; Username+password TXT
+- template: site:{target} filetype:txt intext:"admin password"
+  category: config
+  risk: medium
+  tags: src:tc4dy; Admin credentials
+- template: site:{target} filetype:txt intext:"root password"
+  category: config
+  risk: medium
+  tags: src:tc4dy; Root passwords
+- template: site:{target} filetype:txt intext:"ftp password"
+  category: config
+  risk: medium
+  tags: src:tc4dy; FTP passwords
+- template: site:{target} filetype:txt intext:"email password"
+  category: config
+  risk: medium
+  tags: src:tc4dy; Email passwords
+- template: site:{target} filetype:txt intext:"db password"
+  category: config
+  risk: medium
+  tags: src:tc4dy; DB passwords
+- template: site:{target} filetype:txt intext:api_key
+  category: config
+  risk: medium
+  tags: src:tc4dy; API keys in text
+- template: site:{target} filetype:txt intext:secret_key
+  category: config
+  risk: medium
+  tags: src:tc4dy; Secret keys
+- template: site:{target} filetype:txt intext:access_token
+  category: config
+  risk: medium
+  tags: src:tc4dy; Access tokens
+- template: site:{target} filetype:txt intext:private_key
+  category: config
+  risk: medium
+  tags: src:tc4dy; Private keys
+- template: site:{target} filetype:txt intext:socks
+  category: config
+  risk: medium
+  tags: src:tc4dy; SOCKS proxy lists
+- template: site:{target} filetype:txt intext:"http proxy"
+  category: config
+  risk: medium
+  tags: src:tc4dy; HTTP proxy lists
+- template: site:{target} filetype:txt intext:ssh
+  category: config
+  risk: medium
+  tags: src:tc4dy; SSH credentials
+- template: site:{target} filetype:txt intext:mysql
+  category: config
+  risk: medium
+  tags: src:tc4dy; MySQL credentials
+- template: site:{target} filetype:txt intext:smtp
+  category: config
+  risk: medium
+  tags: src:tc4dy; SMTP credentials
+- template: site:{target} filetype:txt intext:hosts
+  category: config
+  risk: medium
+  tags: src:tc4dy; Hosts files
+- template: site:{target} filetype:txt intext:ip
+  category: config
+  risk: medium
+  tags: src:tc4dy; IP address lists
+- template: site:{target} filetype:txt intext:wordlist
+  category: config
+  risk: medium
+  tags: src:tc4dy; Password wordlists
+- template: site:{target} filetype:txt intext:hash
+  category: config
+  risk: medium
+  tags: src:tc4dy; Hash files
+- template: site:{target} filetype:txt intext:credit
+  category: config
+  risk: medium
+  tags: src:tc4dy; Credit card TXTs
+- template: site:{target} filetype:txt intext:ssn
+  category: config
+  risk: medium
+  tags: src:tc4dy; SSN text files
+- template: site:{target} filetype:txt intext:token
+  category: config
+  risk: medium
+  tags: src:tc4dy; Token files
+- template: site:{target} filetype:txt intext:exploit
+  category: config
+  risk: medium
+  tags: src:tc4dy; Exploit notes
+- template: site:{target} filetype:txt intext:CVE
+  category: config
+  risk: medium
+  tags: src:tc4dy; CVE information
+- template: site:{target} filetype:txt intext:"account number"
+  category: config
+  risk: medium
+  tags: src:tc4dy; Account numbers
+- template: site:{target} filetype:txt intext:backup
+  category: config
+  risk: medium
+  tags: src:tc4dy; Backup credentials
+- template: site:{target} filetype:txt intext:server
+  category: config
+  risk: medium
+  tags: src:tc4dy; Server lists
+- template: site:{target} filetype:txt intext:admin
+  category: config
+  risk: medium
+  tags: src:tc4dy; Admin user lists
+- template: site:{target} filetype:ini intext:password
+  category: config
+  risk: medium
+  tags: src:tc4dy; INI file passwords
+- template: site:{target} filetype:cfg intext:password
+  category: config
+  risk: medium
+  tags: src:tc4dy; CFG file passwords
+- template: site:{target} filetype:conf intext:password
+  category: config
+  risk: medium
+  tags: src:tc4dy; CONF passwords
+- template: site:{target} filetype:inf intext:password
+  category: config
+  risk: medium
+  tags: src:tc4dy; INF passwords
+- template: site:{target} filetype:properties intext:password
+  category: config
+  risk: medium
+  tags: src:tc4dy; Properties passwords
+- template: site:{target} filetype:xml intext:password
+  category: config
+  risk: medium
+  tags: src:tc4dy; XML passwords
+- template: site:{target} filetype:yaml intext:password
+  category: config
+  risk: medium
+  tags: src:tc4dy; YAML passwords
+- template: site:{target} filetype:yml intext:password
+  category: config
+  risk: medium
+  tags: src:tc4dy; YML passwords
+- template: site:{target} filetype:json intext:password
+  category: config
+  risk: medium
+  tags: src:tc4dy; JSON passwords
+- template: site:{target} filetype:toml intext:password
+  category: config
+  risk: medium
+  tags: src:tc4dy; TOML passwords
+- template: site:{target} filetype:bak
+  category: files
+  risk: medium
+  tags: src:tc4dy; BAK backup files
+- template: site:{target} filetype:backup
+  category: files
+  risk: medium
+  tags: src:tc4dy; BACKUP files
+- template: site:{target} filetype:old
+  category: files
+  risk: medium
+  tags: src:tc4dy; Old file versions
+- template: site:{target} filetype:orig
+  category: files
+  risk: medium
+  tags: src:tc4dy; Original file copies
+- template: site:{target} filetype:save
+  category: files
+  risk: medium
+  tags: src:tc4dy; Saved file versions
+- template: site:{target} filetype:tar
+  category: files
+  risk: medium
+  tags: src:tc4dy; TAR archives
+- template: site:{target} filetype:zip
+  category: files
+  risk: medium
+  tags: src:tc4dy; ZIP backup files
+- template: site:{target} filetype:gz
+  category: files
+  risk: medium
+  tags: src:tc4dy; GZIP archives
+- template: site:{target} filetype:7z
+  category: files
+  risk: medium
+  tags: src:tc4dy; 7-Zip archives
+- template: site:{target} filetype:rar
+  category: files
+  risk: medium
+  tags: src:tc4dy; RAR archives
+- template: site:{target} filetype:tgz
+  category: files
+  risk: medium
+  tags: src:tc4dy; TGZ compressed archives
+- template: site:{target} inurl:backup.zip
+  category: files
+  risk: medium
+  tags: src:tc4dy; Site backup ZIPs
+- template: site:{target} inurl:backup.tar
+  category: files
+  risk: medium
+  tags: src:tc4dy; Site backup TARs
+- template: site:{target} inurl:backup.gz
+  category: files
+  risk: medium
+  tags: src:tc4dy; GZ backups
+- template: site:{target} inurl:site.zip
+  category: files
+  risk: medium
+  tags: src:tc4dy; Site archive ZIPs
+- template: site:{target} inurl:dump.sql.gz
+  category: files
+  risk: medium
+  tags: src:tc4dy; Compressed SQL dumps
+- template: site:{target} intitle:"index of" backup
+  category: files
+  risk: medium
+  tags: src:tc4dy; Backup directories
+- template: site:{target} intitle:"index of" ".bak"
+  category: files
+  risk: medium
+  tags: src:tc4dy; BAK file directories
+- template: site:{target} inurl:_bak
+  category: files
+  risk: medium
+  tags: src:tc4dy; Folders named _bak
+- template: site:{target} inurl:old
+  category: files
+  risk: medium
+  tags: src:tc4dy; Old version URLs
+- template: site:{target} inurl:.old
+  category: files
+  risk: medium
+  tags: src:tc4dy; URLs with .old extension
+- template: site:{target} inurl:archive
+  category: files
+  risk: medium
+  tags: src:tc4dy; Archive URL directories
+- template: site:{target} inurl:dump
+  category: files
+  risk: medium
+  tags: src:tc4dy; SQL dump files
+- template: site:{target} filetype:zip intext:config
+  category: files
+  risk: medium
+  tags: src:tc4dy; Config ZIPs
+- template: site:{target} filetype:tar intext:database
+  category: files
+  risk: medium
+  tags: src:tc4dy; DB TARs
+- template: site:{target} filetype:bak intext:sql
+  category: files
+  risk: medium
+  tags: src:tc4dy; SQL backup files
+- template: site:{target} filetype:bak intext:password
+  category: files
+  risk: medium
+  tags: src:tc4dy; BAK with passwords
+- template: site:{target} filetype:zip intext:password
+  category: files
+  risk: medium
+  tags: src:tc4dy; ZIPs with passwords
+- template: filetype:zip site:{target}
+  category: files
+  risk: medium
+  tags: src:tc4dy; Education archives
+- template: site:{target} intext:"password" filetype:txt
+  category: secrets
+  risk: critical
+  tags: src:tc4dy; TXT password files
+- template: site:{target} intext:"passwd" filetype:txt
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Passwd-style files
+- template: site:{target} intext:"pwd" intext:"username"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; PWD+username pairs
+- template: site:{target} intext:"pass" intext:"login"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Login files
+- template: site:{target} intext:"credentials" filetype:txt
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Credential TXTs
+- template: 'site:{target} intext:"login: " intext:"password:"'
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Login:Password pairs
+- template: 'site:{target} intext:"user: " intext:"pass: "'
+  category: secrets
+  risk: high
+  tags: src:tc4dy; User:Pass format
+- template: site:{target} intext:admin intext:password filetype:txt
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Admin passwords
+- template: site:{target} intext:"default password"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Default passwords
+- template: site:{target} intext:"root password"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Root passwords
+- template: site:{target} intext:"mysql password"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; MySQL passwords
+- template: site:{target} intext:"ftp password"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; FTP passwords
+- template: site:{target} intext:"ssh password"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; SSH passwords
+- template: site:{target} intext:"smtp password"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; SMTP passwords
+- template: site:{target} intext:"db_password"
+  category: secrets
+  risk: critical
+  tags: src:tc4dy; DB password in PHP
+- template: site:{target} intext:"database password"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Database passwords
+- template: site:{target} intext:"connection string"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; DB connection strings
+- template: site:{target} intext:"password=" filetype:log
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Passwords in logs
+- template: site:{target} intext:"password=" filetype:env
+  category: secrets
+  risk: critical
+  tags: src:tc4dy; Passwords in env
+- template: site:{target} intext:"PASS=" filetype:conf
+  category: secrets
+  risk: high
+  tags: src:tc4dy; PASS in config files
+- template: 'site:{target} intext:"Authorization: Basic"'
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Base64 basic auth
+- template: site:{target} intext:htpasswd
+  category: secrets
+  risk: high
+  tags: src:tc4dy; HTPasswd files
+- template: site:{target} filetype:htpasswd
+  category: secrets
+  risk: high
+  tags: src:tc4dy; HTPasswd files
+- template: site:{target} intext:"BEGIN RSA PRIVATE KEY"
+  category: secrets
+  risk: critical
+  tags: src:tc4dy; RSA private keys
+- template: site:{target} intext:"BEGIN PRIVATE KEY"
+  category: secrets
+  risk: critical
+  tags: src:tc4dy; Private keys
+- template: site:{target} intext:"BEGIN CERTIFICATE"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; SSL certificates
+- template: site:{target} intext:id_rsa
+  category: secrets
+  risk: critical
+  tags: src:tc4dy; SSH private keys
+- template: site:{target} intext:id_dsa
+  category: secrets
+  risk: high
+  tags: src:tc4dy; DSA private keys
+- template: site:{target} intext:"password hash"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Password hashes
+- template: site:{target} intext:"MD5 hash"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; MD5 hashes
+- template: site:{target} intext:"SHA1 hash"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; SHA1 hashes
+- template: site:{target} intext:"bcrypt"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Bcrypt hashes
+- template: site:{target} intext:"shadow" filetype:txt
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Shadow password files
+- template: site:{target} intext:"passwd" filetype:conf
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Passwd in configs
+- template: site:{target} intext:"admin:admin"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Default admin creds
+- template: site:{target} intext:"guest:guest"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Default guest creds
+- template: site:{target} intext:"administrator:password"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Administrator passwords
+- template: site:{target} intext:api_key
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Generic API keys
+- template: site:{target} intext:apikey
+  category: secrets
+  risk: high
+  tags: src:tc4dy; API key variables
+- template: site:{target} intext:api_secret
+  category: secrets
+  risk: high
+  tags: src:tc4dy; API secrets
+- template: site:{target} intext:access_token
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Access tokens
+- template: site:{target} intext:bearer
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Bearer tokens
+- template: 'site:{target} intext:"Authorization: Bearer"'
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Auth headers
+- template: site:{target} intext:aws_access_key_id
+  category: secrets
+  risk: high
+  tags: src:tc4dy; AWS access keys
+- template: site:{target} intext:aws_secret_access_key
+  category: secrets
+  risk: critical
+  tags: src:tc4dy; AWS secret keys
+- template: site:{target} intext:AKID
+  category: secrets
+  risk: high
+  tags: src:tc4dy; AWS key format
+- template: site:{target} intext:AKIA
+  category: secrets
+  risk: high
+  tags: src:tc4dy; AWS AKIA keys
+- template: site:{target} intext:AIza
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Google API keys
+- template: site:{target} intext:"google_api_key"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Google API key variable
+- template: site:{target} intext:sk_live
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Stripe live secret keys
+- template: site:{target} intext:pk_live
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Stripe live public keys
+- template: site:{target} intext:sk_test
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Stripe test keys
+- template: site:{target} intext:ghp_
+  category: secrets
+  risk: high
+  tags: src:tc4dy; GitHub personal tokens
+- template: site:{target} intext:gho_
+  category: secrets
+  risk: high
+  tags: src:tc4dy; GitHub OAuth tokens
+- template: site:{target} intext:ghs_
+  category: secrets
+  risk: high
+  tags: src:tc4dy; GitHub server tokens
+- template: site:{target} intext:ghr_
+  category: secrets
+  risk: high
+  tags: src:tc4dy; GitHub refresh tokens
+- template: site:{target} intext:"GITHUB_TOKEN"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; GitHub token ENV
+- template: site:{target} intext:xoxb-
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Slack bot tokens
+- template: site:{target} intext:xoxp-
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Slack user tokens
+- template: site:{target} intext:xoxa-
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Slack workspace tokens
+- template: site:{target} intext:"SLACK_TOKEN"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Slack token ENV
+- template: site:{target} intext:"twilio"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Twilio API keys
+- template: site:{target} intext:"sendgrid"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; SendGrid keys
+- template: site:{target} intext:"mailgun"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Mailgun keys
+- template: site:{target} intext:"mailchimp"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Mailchimp keys
+- template: site:{target} intext:firebase
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Firebase keys
+- template: site:{target} intext:"FIREBASE_API_KEY"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Firebase API key
+- template: site:{target} intext:dropbox_token
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Dropbox tokens
+- template: site:{target} intext:"azure_client_secret"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Azure secrets
+- template: site:{target} intext:"AZURE_CLIENT_ID"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Azure client IDs
+- template: site:{target} intext:heroku
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Heroku API keys
+- template: site:{target} intext:paypal
+  category: secrets
+  risk: high
+  tags: src:tc4dy; PayPal secrets
+- template: site:{target} intext:shopify
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Shopify keys
+- template: site:{target} intext:twitter
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Twitter API keys
+- template: site:{target} intext:"consumer_secret"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Consumer secrets
+- template: site:{target} intext:facebook
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Facebook secrets
+- template: site:{target} intext:instagram
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Instagram tokens
+- template: site:{target} intext:linkedin
+  category: secrets
+  risk: high
+  tags: src:tc4dy; LinkedIn secrets
+- template: site:{target} intext:openai
+  category: secrets
+  risk: high
+  tags: src:tc4dy; OpenAI keys
+- template: site:{target} intext:"sk-"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; OpenAI-style keys
+- template: site:{target} intext:anthropic
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Anthropic API keys
+- template: site:{target} intext:cloudflare
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Cloudflare keys
+- template: site:{target} intext:digitalocean
+  category: secrets
+  risk: high
+  tags: src:tc4dy; DigitalOcean tokens
+- template: site:{target} intext:linode
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Linode keys
+- template: site:{target} intext:vultr
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Vultr API keys
+- template: site:{target} intext:jwt
+  category: secrets
+  risk: high
+  tags: src:tc4dy; JWT secrets
+- template: site:{target} intext:"JWT_SECRET"
+  category: secrets
+  risk: critical
+  tags: src:tc4dy; JWT secret ENV
+- template: site:{target} filetype:env
+  category: secrets
+  risk: critical
+  tags: src:tc4dy; All ENV files
+- template: site:{target} filetype:env intext:DB_PASSWORD
+  category: secrets
+  risk: critical
+  tags: src:tc4dy; DB password in ENV
+- template: site:{target} filetype:env intext:DB_USER
+  category: secrets
+  risk: critical
+  tags: src:tc4dy; DB user in ENV
+- template: site:{target} filetype:env intext:DATABASE_URL
+  category: secrets
+  risk: critical
+  tags: src:tc4dy; DB URL in ENV
+- template: site:{target} filetype:env intext:SECRET_KEY
+  category: secrets
+  risk: critical
+  tags: src:tc4dy; Secret keys in ENV
+- template: site:{target} filetype:env intext:APP_KEY
+  category: secrets
+  risk: critical
+  tags: src:tc4dy; App keys in ENV
+- template: site:{target} filetype:env intext:MAIL_PASSWORD
+  category: secrets
+  risk: critical
+  tags: src:tc4dy; Mail passwords
+- template: site:{target} filetype:env intext:SMTP
+  category: secrets
+  risk: critical
+  tags: src:tc4dy; SMTP config in ENV
+- template: site:{target} filetype:env intext:REDIS
+  category: secrets
+  risk: critical
+  tags: src:tc4dy; Redis config
+- template: site:{target} filetype:env intext:MONGO
+  category: secrets
+  risk: critical
+  tags: src:tc4dy; MongoDB config
+- template: site:{target} filetype:env intext:AWS
+  category: secrets
+  risk: critical
+  tags: src:tc4dy; AWS config in ENV
+- template: site:{target} filetype:php intext:db_password
+  category: secrets
+  risk: critical
+  tags: src:tc4dy; PHP DB passwords
+- template: site:{target} filetype:php intext:mysql_connect
+  category: secrets
+  risk: high
+  tags: src:tc4dy; MySQL connections
+- template: site:{target} filetype:php intext:"define('DB_PASSWORD"
+  category: secrets
+  risk: critical
+  tags: src:tc4dy; WP DB password
+- template: site:{target} filetype:php intext:wp-config
+  category: secrets
+  risk: high
+  tags: src:tc4dy; WP config files
+- template: site:{target} filetype:php intext:"DB_HOST"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; DB host in PHP
+- template: site:{target} filetype:php intext:"DB_NAME"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; DB name in PHP
+- template: site:{target} filetype:php intext:config
+  category: secrets
+  risk: high
+  tags: src:tc4dy; PHP config files
+- template: site:{target} filetype:php intext:database
+  category: secrets
+  risk: high
+  tags: src:tc4dy; PHP database config
+- template: site:{target} filetype:php intext:settings
+  category: secrets
+  risk: high
+  tags: src:tc4dy; PHP settings files
+- template: site:{target} filetype:json intext:config
+  category: secrets
+  risk: high
+  tags: src:tc4dy; JSON config files
+- template: site:{target} filetype:json intext:database
+  category: secrets
+  risk: high
+  tags: src:tc4dy; JSON DB config
+- template: site:{target} filetype:yml intext:database
+  category: secrets
+  risk: high
+  tags: src:tc4dy; YAML DB config
+- template: site:{target} filetype:xml intext:connectionString
+  category: secrets
+  risk: high
+  tags: src:tc4dy; .NET connection strings
+- template: site:{target} filetype:conf intext:nginx
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Nginx configs
+- template: site:{target} filetype:conf intext:apache
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Apache configs
+- template: site:{target} filetype:conf intext:mysql
+  category: secrets
+  risk: high
+  tags: src:tc4dy; MySQL configs
+- template: site:{target} filetype:ini intext:database
+  category: secrets
+  risk: high
+  tags: src:tc4dy; INI DB config
+- template: site:{target} inurl:wp-config.php
+  category: secrets
+  risk: high
+  tags: src:tc4dy; WordPress config
+- template: site:{target} inurl:config.php
+  category: secrets
+  risk: high
+  tags: src:tc4dy; PHP config files
+- template: site:{target} inurl:settings.php
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Settings PHP
+- template: site:{target} inurl:database.php
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Database PHP files
+- template: site:{target} inurl:config.json
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Config JSON
+- template: site:{target} inurl:settings.json
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Settings JSON
+- template: site:{target} inurl:secrets.json
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Secrets JSON
+- template: site:{target} inurl:credentials.json
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Credentials JSON
+- template: site:{target} inurl:appsettings.json
+  category: secrets
+  risk: high
+  tags: src:tc4dy; .NET appsettings
+- template: site:{target} inurl:.htpasswd
+  category: secrets
+  risk: high
+  tags: src:tc4dy; HTPasswd files
+- template: site:{target} inurl:.htaccess
+  category: secrets
+  risk: high
+  tags: src:tc4dy; HTACCESS files
+- template: site:{target} inurl:web.config
+  category: secrets
+  risk: high
+  tags: src:tc4dy; ASP.NET web.config
+- template: site:{target} inurl:application.properties
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Spring properties
+- template: site:{target} inurl:application.yml
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Spring YAML
+- template: site:{target} intext:"BEGIN DSA PRIVATE KEY"
+  category: secrets
+  risk: critical
+  tags: src:tc4dy; DSA private keys
+- template: site:{target} intext:"BEGIN EC PRIVATE KEY"
+  category: secrets
+  risk: critical
+  tags: src:tc4dy; EC private keys
+- template: site:{target} intext:"BEGIN OPENSSH PRIVATE KEY"
+  category: secrets
+  risk: critical
+  tags: src:tc4dy; OpenSSH keys
+- template: site:{target} intext:"BEGIN PGP PRIVATE KEY"
+  category: secrets
+  risk: critical
+  tags: src:tc4dy; PGP private keys
+- template: site:{target} intext:"BEGIN PGP PUBLIC KEY"
+  category: secrets
+  risk: high
+  tags: src:tc4dy; PGP public keys
+- template: site:{target} filetype:pem intext:PRIVATE
+  category: secrets
+  risk: high
+  tags: src:tc4dy; PEM private keys
+- template: site:{target} filetype:key intext:PRIVATE
+  category: secrets
+  risk: high
+  tags: src:tc4dy; KEY private files
+- template: site:{target} filetype:ppk
+  category: secrets
+  risk: high
+  tags: src:tc4dy; PuTTY private keys
+- template: site:{target} filetype:p12
+  category: secrets
+  risk: high
+  tags: src:tc4dy; P12 certificate files
+- template: site:{target} filetype:pfx
+  category: secrets
+  risk: high
+  tags: src:tc4dy; PFX certificate files
+- template: site:{target} filetype:crt
+  category: secrets
+  risk: high
+  tags: src:tc4dy; CRT certificate files
+- template: site:{target} filetype:cer
+  category: secrets
+  risk: high
+  tags: src:tc4dy; CER certificate files
+- template: site:{target} inurl:id_rsa
+  category: secrets
+  risk: critical
+  tags: src:tc4dy; id_rsa key files
+- template: site:{target} inurl:id_dsa
+  category: secrets
+  risk: high
+  tags: src:tc4dy; id_dsa key files
+- template: site:{target} inurl:.ssh
+  category: secrets
+  risk: high
+  tags: src:tc4dy; SSH directories
+- template: site:{target} inurl:authorized_keys
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Authorized keys files
+- template: site:{target} inurl:known_hosts
+  category: secrets
+  risk: high
+  tags: src:tc4dy; Known hosts files
+- template: site:{target} filetype:pub intext:ssh-rsa
+  category: secrets
+  risk: high
+  tags: src:tc4dy; SSH public keys
+- template: site:{target} intext:ssh-rsa AAAA
+  category: secrets
+  risk: high
+  tags: src:tc4dy; SSH public key strings
+- template: site:{target} inurl:admin
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Admin pages
+- template: site:{target} intitle:admin
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Pages titled admin
+- template: site:{target} intitle:admin dashboard
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Admin dashboards
+- template: site:{target} intitle:admin panel
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Admin panels
+- template: site:{target} intitle:admin console
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Admin consoles
+- template: site:{target} intitle:administration
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Admin pages
+- template: site:{target} inurl:administration
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Admin URLs
+- template: site:{target} inurl:admin-area
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Admin areas
+- template: site:{target} inurl:backend/admin
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Backend admin
+- template: site:{target} inurl:adminpanel
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Admin panel URLs
+- template: site:{target} inurl:manage
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Management pages
+- template: site:{target} inurl:manager
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Manager pages
+- template: site:{target} inurl:management
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Management URLs
+- template: site:{target} inurl:controlpanel
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Control panels
+- template: site:{target} inurl:control-panel
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Control panel URLs
+- template: site:{target} inurl:admin.php
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Admin PHP pages
+- template: site:{target} inurl:admin.aspx
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Admin ASPX pages
+- template: site:{target} inurl:admin.html
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Admin HTML pages
+- template: site:{target} inurl:administrator
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Administrator URLs
+- template: site:{target} intitle:"admin index"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Admin index pages
+- template: site:{target} intitle:"index.of admin"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Admin directories
+- template: site:{target} intitle:"site administration"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Site admin pages
+- template: site:{target} intitle:"site manager"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Site manager
+- template: site:{target} intitle:"web admin"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Web admin interfaces
+- template: site:{target} inurl:admin intext:login
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Admin login forms
+- template: site:{target} inurl:/admin/
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Admin directory
+- template: site:{target} inurl:wp-admin
+  category: panels
+  risk: medium
+  tags: src:tc4dy; WordPress admin
+- template: site:{target} inurl:joomla-administrator
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Joomla admin
+- template: site:{target} inurl:drupal/admin
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Drupal admin
+- template: site:{target} inurl:sitecore
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Sitecore admin
+- template: site:{target} inurl:umbraco
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Umbraco admin
+- template: site:{target} inurl:typo3
+  category: panels
+  risk: medium
+  tags: src:tc4dy; TYPO3 admin
+- template: site:{target} inurl:magento/admin
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Magento admin
+- template: site:{target} intitle:"Tomcat" inurl:manager
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Tomcat manager
+- template: site:{target} intitle:"Jenkins"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Jenkins dashboard
+- template: site:{target} intitle:"Kibana"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Kibana admin
+- template: site:{target} intitle:"Grafana"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Grafana login
+- template: site:{target} intitle:"Portainer"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Portainer Docker admin
+- template: site:{target} inurl:sign-in
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Sign-in hyphenated
+- template: site:{target} inurl:user/login
+  category: panels
+  risk: medium
+  tags: src:tc4dy; User login
+- template: site:{target} inurl:member/login
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Member login
+- template: site:{target} inurl:account/login
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Account login
+- template: site:{target} inurl:customer/login
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Customer login
+- template: site:{target} inurl:secure/login
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Secure login
+- template: site:{target} inurl:portal/login
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Portal login
+- template: site:{target} inurl:login.php
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Login PHP
+- template: site:{target} inurl:login.asp
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Login ASP
+- template: site:{target} inurl:login.aspx
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Login ASPX
+- template: site:{target} inurl:login.html
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Login HTML
+- template: site:{target} intitle:"login"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Pages titled login
+- template: site:{target} intitle:"user login"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; User login pages
+- template: site:{target} intitle:"portal login"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Portal logins
+- template: site:{target} intitle:"member login"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Member logins
+- template: site:{target} intitle:"account login"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Account logins
+- template: site:{target} intitle:"please log in"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Login prompts
+- template: site:{target} intitle:"sign in"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Sign in pages
+- template: site:{target} intext:"username" intext:"password" inurl:login
+  category: panels
+  risk: critical
+  tags: src:tc4dy; Login forms
+- template: site:{target} inurl:login intext:"forgot password"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Reset password pages
+- template: site:{target} inurl:login intext:"remember me"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Remember-me logins
+- template: site:{target} inurl:owa
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Outlook Web Access
+- template: site:{target} intitle:"Outlook Web App"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; OWA login
+- template: site:{target} intitle:"Citrix"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Citrix login
+- template: site:{target} intitle:"VPN" inurl:login
+  category: panels
+  risk: medium
+  tags: src:tc4dy; VPN login pages
+- template: site:{target} inurl:vpn/login
+  category: panels
+  risk: medium
+  tags: src:tc4dy; VPN login
+- template: site:{target} inurl:remote/login
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Remote access login
+- template: site:{target} inurl:rdp/login
+  category: panels
+  risk: medium
+  tags: src:tc4dy; RDP login
+- template: site:{target} inurl:ssh/login
+  category: panels
+  risk: medium
+  tags: src:tc4dy; SSH web login
+- template: site:{target} inurl:phpmyadmin
+  category: panels
+  risk: medium
+  tags: src:tc4dy; phpMyAdmin panels
+- template: site:{target} intitle:phpMyAdmin
+  category: panels
+  risk: medium
+  tags: src:tc4dy; PMA page titles
+- template: site:{target} inurl:phpmyadmin/index.php
+  category: panels
+  risk: medium
+  tags: src:tc4dy; PMA login
+- template: site:{target} intitle:"phpMyAdmin" intext:"Welcome to"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; PMA welcome page
+- template: site:{target} inurl:db/phpmyadmin
+  category: panels
+  risk: medium
+  tags: src:tc4dy; DB admin paths
+- template: site:{target} inurl:phpmyadmin/setup
+  category: panels
+  risk: medium
+  tags: src:tc4dy; PMA setup page
+- template: site:{target} intitle:adminer
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Adminer DB admin
+- template: site:{target} inurl:adminer.php
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Adminer PHP
+- template: site:{target} inurl:adminer
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Adminer panels
+- template: site:{target} intitle:"SQL Server" inurl:asp
+  category: panels
+  risk: medium
+  tags: src:tc4dy; SQL Server web
+- template: site:{target} intitle:"MongoDB" inurl:28017
+  category: panels
+  risk: medium
+  tags: src:tc4dy; MongoDB HTTP
+- template: site:{target} inurl:27017
+  category: panels
+  risk: medium
+  tags: src:tc4dy; MongoDB default port
+- template: site:{target} inurl:5432
+  category: panels
+  risk: medium
+  tags: src:tc4dy; PostgreSQL port
+- template: site:{target} inurl:3306
+  category: panels
+  risk: medium
+  tags: src:tc4dy; MySQL port URLs
+- template: site:{target} intitle:"Cassandra" inurl:admin
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Cassandra admin
+- template: site:{target} intitle:"Redis" inurl:admin
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Redis admin
+- template: site:{target} intitle:"Elasticsearch"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Elasticsearch UI
+- template: site:{target} inurl:elasticsearch
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Elasticsearch URLs
+- template: site:{target} inurl:_cat/indices
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Elasticsearch indices
+- template: site:{target} inurl:kibana
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Kibana dashboards
+- template: site:{target} intitle:"RabbitMQ"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; RabbitMQ mgmt
+- template: site:{target} inurl:rabbitmq
+  category: panels
+  risk: medium
+  tags: src:tc4dy; RabbitMQ URLs
+- template: site:{target} inurl:cpanel
+  category: panels
+  risk: medium
+  tags: src:tc4dy; cPanel panels
+- template: site:{target} intitle:cpanel
+  category: panels
+  risk: medium
+  tags: src:tc4dy; cPanel login
+- template: site:{target} inurl:2082
+  category: panels
+  risk: medium
+  tags: src:tc4dy; cPanel port 2082
+- template: site:{target} inurl:2083
+  category: panels
+  risk: medium
+  tags: src:tc4dy; cPanel SSL port
+- template: site:{target} inurl:2086
+  category: panels
+  risk: medium
+  tags: src:tc4dy; WHM port
+- template: site:{target} inurl:2087
+  category: panels
+  risk: medium
+  tags: src:tc4dy; WHM SSL port
+- template: site:{target} inurl:whm
+  category: panels
+  risk: medium
+  tags: src:tc4dy; WHM panels
+- template: site:{target} intitle:"WHM"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; WHM page titles
+- template: site:{target} inurl:webmail
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Webmail interfaces
+- template: site:{target} intitle:webmail
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Webmail pages
+- template: site:{target} intitle:plesk
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Plesk panels
+- template: site:{target} inurl:plesk
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Plesk URLs
+- template: site:{target} intitle:directadmin
+  category: panels
+  risk: medium
+  tags: src:tc4dy; DirectAdmin
+- template: site:{target} inurl:directadmin
+  category: panels
+  risk: medium
+  tags: src:tc4dy; DirectAdmin URLs
+- template: site:{target} intitle:ispconfig
+  category: panels
+  risk: medium
+  tags: src:tc4dy; ISPConfig panels
+- template: site:{target} inurl:ispconfig
+  category: panels
+  risk: medium
+  tags: src:tc4dy; ISPConfig URLs
+- template: site:{target} intitle:"Webmin"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Webmin panels
+- template: site:{target} inurl:webmin
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Webmin URLs
+- template: site:{target} inurl:10000
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Webmin port
+- template: site:{target} intitle:"VirtualMin"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; VirtualMin panels
+- template: site:{target} inurl:virtualmin
+  category: panels
+  risk: medium
+  tags: src:tc4dy; VirtualMin URLs
+- template: site:{target} intitle:"HestiaCP"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; HestiaCP panels
+- template: site:{target} inurl:8083
+  category: panels
+  risk: medium
+  tags: src:tc4dy; HestiaCP port
+- template: site:{target} intitle:"Froxlor"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Froxlor panels
+- template: site:{target} inurl:froxlor
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Froxlor URLs
+- template: site:{target} intitle:"index of /"
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Root directories
+- template: site:{target} intitle:"index of" "parent directory"
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Parent directory listings
+- template: site:{target} intitle:"directory listing"
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Directory listing pages
+- template: intitle:"index of" site:{target}
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Edu open directories
+- template: site:{target} intitle:"index of" apache
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Apache listings
+- template: site:{target} intitle:"index of" nginx
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Nginx listings
+- template: site:{target} intitle:"index of" iis
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; IIS listings
+- template: site:{target} intitle:"autoindex"
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Auto-index pages
+- template: site:{target} intitle:"index of" uploads
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Upload directories
+- template: site:{target} intitle:"index of" files
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Files directories
+- template: site:{target} intitle:"index of" images
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Image directories
+- template: site:{target} intitle:"index of" media
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Media directories
+- template: site:{target} intitle:"index of" documents
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Document directories
+- template: site:{target} intitle:"index of" downloads
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Download directories
+- template: site:{target} intitle:"index of" assets
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Asset directories
+- template: site:{target} intitle:"index of" public
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Public directories
+- template: site:{target} intitle:"index of" private
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Private directories
+- template: site:{target} intitle:"index of" config
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Config directories
+- template: site:{target} intitle:"index of" settings
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Settings directories
+- template: site:{target} intitle:"index of" conf
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Conf directories
+- template: site:{target} intitle:"index of" etc
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; ETC directories
+- template: site:{target} intitle:"index of" logs
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Log directories
+- template: site:{target} intitle:"index of" log
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Log file directories
+- template: site:{target} intitle:"index of" tmp
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Temp directories
+- template: site:{target} intitle:"index of" temp
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Temp file directories
+- template: site:{target} intitle:"index of" cache
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Cache directories
+- template: site:{target} intitle:"index of" include
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Include directories
+- template: site:{target} intitle:"index of" lib
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Library directories
+- template: site:{target} intitle:"index of" vendor
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Vendor directories
+- template: site:{target} intitle:"index of" node_modules
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Node modules exposed
+- template: site:{target} intitle:"index of" .git
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Git directories
+- template: site:{target} intitle:"index of" .svn
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; SVN directories
+- template: site:{target} intitle:"index of" sql
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; SQL file directories
+- template: site:{target} intitle:"index of" db
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; DB directories
+- template: site:{target} intitle:"index of" dump
+  category: exposure
+  risk: medium
+  tags: src:tc4dy; Dump file directories
+- template: site:{target} filetype:sql intext:"INSERT INTO"
+  category: files
+  risk: medium
+  tags: src:tc4dy; SQL dumps with data
+- template: site:{target} filetype:sql intext:mysql
+  category: files
+  risk: medium
+  tags: src:tc4dy; MySQL SQL files
+- template: site:{target} filetype:sql intext:backup
+  category: files
+  risk: medium
+  tags: src:tc4dy; SQL backup dumps
+- template: site:{target} filetype:sql intext:password
+  category: files
+  risk: medium
+  tags: src:tc4dy; SQL files with passwords
+- template: site:{target} filetype:sql intext:CREATE DATABASE
+  category: files
+  risk: medium
+  tags: src:tc4dy; DB creation scripts
+- template: site:{target} filetype:sql intext:CREATE TABLE
+  category: files
+  risk: medium
+  tags: src:tc4dy; Table creation SQL
+- template: site:{target} filetype:sql intext:DROP TABLE
+  category: files
+  risk: medium
+  tags: src:tc4dy; DROP table SQL
+- template: site:{target} filetype:sql intext:ALTER TABLE
+  category: files
+  risk: medium
+  tags: src:tc4dy; ALTER table SQL
+- template: site:{target} filetype:sql intext:username
+  category: files
+  risk: medium
+  tags: src:tc4dy; SQL with usernames
+- template: site:{target} filetype:sql intext:email
+  category: files
+  risk: medium
+  tags: src:tc4dy; SQL with emails
+- template: site:{target} filetype:sql intext:users
+  category: files
+  risk: medium
+  tags: src:tc4dy; User table dumps
+- template: site:{target} filetype:mdb
+  category: files
+  risk: medium
+  tags: src:tc4dy; MS Access databases
+- template: site:{target} filetype:db
+  category: files
+  risk: medium
+  tags: src:tc4dy; SQLite DB files
+- template: site:{target} filetype:sqlite
+  category: files
+  risk: medium
+  tags: src:tc4dy; SQLite files
+- template: site:{target} filetype:sqlite3
+  category: files
+  risk: medium
+  tags: src:tc4dy; SQLite3 files
+- template: site:{target} filetype:accdb
+  category: files
+  risk: medium
+  tags: src:tc4dy; MS Access ACCDB
+- template: site:{target} filetype:dbf
+  category: files
+  risk: medium
+  tags: src:tc4dy; DBF database files
+- template: site:{target} filetype:json intext:mongodb
+  category: files
+  risk: medium
+  tags: src:tc4dy; MongoDB JSON export
+- template: site:{target} filetype:json intext:"_id"
+  category: files
+  risk: medium
+  tags: src:tc4dy; MongoDB documents
+- template: site:{target} inurl:backup.sql
+  category: files
+  risk: medium
+  tags: src:tc4dy; SQL backup files
+- template: site:{target} inurl:data.sql
+  category: files
+  risk: medium
+  tags: src:tc4dy; Data SQL files
+- template: site:{target} inurl:db.sql
+  category: files
+  risk: medium
+  tags: src:tc4dy; DB SQL files
+- template: site:{target} filetype:log intext:error
+  category: files
+  risk: medium
+  tags: src:tc4dy; Error log files
+- template: site:{target} filetype:log intext:warning
+  category: files
+  risk: medium
+  tags: src:tc4dy; Warning logs
+- template: site:{target} filetype:log intext:debug
+  category: files
+  risk: medium
+  tags: src:tc4dy; Debug log files
+- template: site:{target} filetype:log intext:exception
+  category: files
+  risk: medium
+  tags: src:tc4dy; Exception logs
+- template: site:{target} filetype:log intext:fatal
+  category: files
+  risk: medium
+  tags: src:tc4dy; Fatal error logs
+- template: site:{target} filetype:log intext:access
+  category: files
+  risk: medium
+  tags: src:tc4dy; Access logs
+- template: site:{target} filetype:log intext:auth
+  category: files
+  risk: medium
+  tags: src:tc4dy; Authentication logs
+- template: site:{target} filetype:log intext:apache
+  category: files
+  risk: medium
+  tags: src:tc4dy; Apache logs
+- template: site:{target} filetype:log intext:nginx
+  category: files
+  risk: medium
+  tags: src:tc4dy; Nginx logs
+- template: site:{target} filetype:log intext:ftp
+  category: files
+  risk: medium
+  tags: src:tc4dy; FTP log files
+- template: site:{target} filetype:log intext:ssh
+  category: files
+  risk: medium
+  tags: src:tc4dy; SSH log files
+- template: site:{target} filetype:log intext:mysql
+  category: files
+  risk: medium
+  tags: src:tc4dy; MySQL logs
+- template: site:{target} filetype:log intext:php
+  category: files
+  risk: medium
+  tags: src:tc4dy; PHP error logs
+- template: site:{target} filetype:log intext:sql
+  category: files
+  risk: medium
+  tags: src:tc4dy; SQL logs
+- template: site:{target} filetype:log intext:password
+  category: files
+  risk: medium
+  tags: src:tc4dy; Passwords in logs
+- template: site:{target} filetype:log intext:username
+  category: files
+  risk: medium
+  tags: src:tc4dy; Usernames in logs
+- template: site:{target} filetype:log intext:login
+  category: files
+  risk: medium
+  tags: src:tc4dy; Login activity logs
+- template: site:{target} filetype:log intext:failed
+  category: files
+  risk: medium
+  tags: src:tc4dy; Failed login logs
+- template: site:{target} filetype:log intext:invalid
+  category: files
+  risk: medium
+  tags: src:tc4dy; Invalid user logs
+- template: site:{target} filetype:log intext:ip
+  category: files
+  risk: medium
+  tags: src:tc4dy; IP address logs
+- template: site:{target} filetype:log intext:user-agent
+  category: files
+  risk: medium
+  tags: src:tc4dy; UA string logs
+- template: site:{target} filetype:log intext:404
+  category: files
+  risk: medium
+  tags: src:tc4dy; 404 error logs
+- template: site:{target} filetype:log intext:500
+  category: files
+  risk: medium
+  tags: src:tc4dy; 500 error logs
+- template: site:{target} filetype:log intext:403
+  category: files
+  risk: medium
+  tags: src:tc4dy; Forbidden error logs
+- template: site:{target} intitle:"index of" "access.log"
+  category: files
+  risk: medium
+  tags: src:tc4dy; Access log directories
+- template: site:{target} intitle:"index of" "error.log"
+  category: files
+  risk: medium
+  tags: src:tc4dy; Error log directories
+- template: site:{target} inurl:access.log
+  category: files
+  risk: medium
+  tags: src:tc4dy; Access log URLs
+- template: site:{target} intext:"mysql_fetch_array()"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; MySQL PHP errors
+- template: site:{target} intext:"mysql_num_rows()"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; MySQL row errors
+- template: site:{target} intext:"mysql_connect()"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; MySQL connection errors
+- template: site:{target} intext:"supplied argument is not a valid MySQL"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; MySQL argument errors
+- template: site:{target} intext:"You have an error in your SQL syntax"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; SQL syntax errors
+- template: 'site:{target} intext:"Warning: mysql"'
+  category: errors
+  risk: medium
+  tags: src:tc4dy; MySQL PHP warnings
+- template: site:{target} intext:"ORA-00921"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; Oracle DB errors
+- template: site:{target} intext:"ORA-00933"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; Oracle SQL errors
+- template: site:{target} intext:"ORA-01017"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; Oracle login errors
+- template: site:{target} intext:"Microsoft OLE DB Provider for ODBC"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; MSSQL ODBC errors
+- template: site:{target} intext:"Microsoft OLE DB Provider for SQL Server"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; MSSQL OLE errors
+- template: site:{target} intext:"ODBC SQL Server Driver"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; MSSQL driver errors
+- template: site:{target} intext:"PostgreSQL query failed"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; PostgreSQL errors
+- template: site:{target} intext:"pg_connect():"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; PostgreSQL connection errors
+- template: 'site:{target} intext:"Warning: pg_"'
+  category: errors
+  risk: medium
+  tags: src:tc4dy; PHP PostgreSQL warnings
+- template: site:{target} intext:"SQLite3::query"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; SQLite errors
+- template: site:{target} intext:"java.sql.SQLException"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; Java SQL exceptions
+- template: site:{target} intext:"com.mysql.jdbc"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; Java MySQL errors
+- template: site:{target} intext:"Unclosed quotation mark"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; SQL quote errors
+- template: site:{target} intext:"syntax error, unexpected"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; SQL syntax errors
+- template: site:{target} inurl:.git/index
+  category: vcs
+  risk: high
+  tags: src:tc4dy; Git index file
+- template: site:{target} inurl:.git/logs
+  category: vcs
+  risk: high
+  tags: src:tc4dy; Git log files
+- template: site:{target} inurl:.git/refs
+  category: vcs
+  risk: high
+  tags: src:tc4dy; Git refs
+- template: site:{target} inurl:.git/objects
+  category: vcs
+  risk: high
+  tags: src:tc4dy; Git objects
+- template: site:{target} inurl:.svn/entries
+  category: vcs
+  risk: high
+  tags: src:tc4dy; SVN entries
+- template: site:{target} inurl:.svn/wc.db
+  category: vcs
+  risk: high
+  tags: src:tc4dy; SVN working copy
+- template: site:{target} inurl:.hg/requires
+  category: vcs
+  risk: high
+  tags: src:tc4dy; Mercurial files
+- template: site:{target} inurl:.hg/store
+  category: vcs
+  risk: high
+  tags: src:tc4dy; Mercurial store
+- template: site:{target} intext:password
+  category: vcs
+  risk: high
+  tags: src:tc4dy; GitHub passwords
+- template: site:{target} intext:secret
+  category: vcs
+  risk: high
+  tags: src:tc4dy; GitHub secrets
+- template: site:{target} filetype:py intext:password
+  category: vcs
+  risk: high
+  tags: src:tc4dy; Python password files
+- template: site:{target} filetype:js intext:password
+  category: vcs
+  risk: high
+  tags: src:tc4dy; JS password files
+- template: site:{target} filetype:rb intext:password
+  category: vcs
+  risk: high
+  tags: src:tc4dy; Ruby password files
+- template: site:{target} filetype:java intext:password
+  category: vcs
+  risk: high
+  tags: src:tc4dy; Java password files
+- template: site:{target} filetype:go intext:password
+  category: vcs
+  risk: high
+  tags: src:tc4dy; Go password files
+- template: site:{target} filetype:php intext:password
+  category: vcs
+  risk: high
+  tags: src:tc4dy; PHP password files
+- template: site:{target} filetype:sh intext:password
+  category: vcs
+  risk: high
+  tags: src:tc4dy; Shell script passwords
+- template: site:{target} filetype:ps1 intext:password
+  category: vcs
+  risk: high
+  tags: src:tc4dy; PowerShell passwords
+- template: site:{target} filetype:py intext:api_key
+  category: vcs
+  risk: high
+  tags: src:tc4dy; Python API keys
+- template: site:{target} filetype:js intext:api_key
+  category: vcs
+  risk: high
+  tags: src:tc4dy; JS API keys
+- template: site:{target} filetype:js intext:token
+  category: vcs
+  risk: high
+  tags: src:tc4dy; JS token files
+- template: site:{target} filetype:json intext:token
+  category: vcs
+  risk: high
+  tags: src:tc4dy; JSON tokens
+- template: site:{target} inurl:Makefile
+  category: vcs
+  risk: high
+  tags: src:tc4dy; Makefile credentials
+- template: site:{target} inurl:Dockerfile
+  category: vcs
+  risk: high
+  tags: src:tc4dy; Dockerfile secrets
+- template: site:{target} filetype:php intext:phpinfo()
+  category: errors
+  risk: medium
+  tags: src:tc4dy; PHP info pages
+- template: site:{target} inurl:phpinfo.php
+  category: errors
+  risk: medium
+  tags: src:tc4dy; PHP info URL
+- template: site:{target} intitle:"PHP Version"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; PHP version pages
+- template: site:{target} intitle:"Debug Bar"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; Debug bars
+- template: site:{target} inurl:_debugbar
+  category: errors
+  risk: medium
+  tags: src:tc4dy; Laravel debugbar
+- template: site:{target} inurl:debug_toolbar
+  category: errors
+  risk: medium
+  tags: src:tc4dy; Django debug toolbar
+- template: site:{target} inurl:debug/
+  category: errors
+  risk: medium
+  tags: src:tc4dy; Debug URL paths
+- template: site:{target} inurl:actuator
+  category: errors
+  risk: medium
+  tags: src:tc4dy; Spring Boot actuator
+- template: site:{target} inurl:actuator/env
+  category: errors
+  risk: medium
+  tags: src:tc4dy; Spring Boot env dump
+- template: site:{target} inurl:actuator/health
+  category: errors
+  risk: medium
+  tags: src:tc4dy; Spring health check
+- template: site:{target} inurl:actuator/beans
+  category: errors
+  risk: medium
+  tags: src:tc4dy; Spring beans dump
+- template: site:{target} inurl:trace.axd
+  category: errors
+  risk: medium
+  tags: src:tc4dy; ASP.NET trace viewer
+- template: site:{target} inurl:elmah.axd
+  category: errors
+  risk: medium
+  tags: src:tc4dy; ASP.NET error logger
+- template: site:{target} intitle:"Prometheus"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; Prometheus metrics
+- template: site:{target} inurl:9090
+  category: errors
+  risk: medium
+  tags: src:tc4dy; Prometheus port
+- template: site:{target} intitle:"Jaeger"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; Jaeger tracing
+- template: site:{target} intitle:"Zipkin"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; Zipkin tracing
+- template: site:{target} intitle:"Datadog"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; Datadog dashboards
+- template: site:{target} intitle:"New Relic"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; New Relic APM
+- template: site:{target} inurl:/_profiler
+  category: errors
+  risk: medium
+  tags: src:tc4dy; Symfony profiler
+- template: site:{target} inurl:/__debug__
+  category: errors
+  risk: medium
+  tags: src:tc4dy; Django debug
+- template: site:{target} intitle:"Sentry"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; Sentry error tracking
+- template: site:{target} intitle:"Loggly"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; Loggly log mgmt
+- template: site:{target} intitle:"Splunk"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; Splunk SIEM
+- template: site:{target} intitle:"Graylog"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; Graylog log mgmt
+- template: site:{target} intitle:"ELK Stack"
+  category: errors
+  risk: medium
+  tags: src:tc4dy; ELK stack
+- template: site:{target} inurl:/_cluster/health
+  category: errors
+  risk: medium
+  tags: src:tc4dy; Elasticsearch health
+- template: site:{target} inurl:/_nodes
+  category: errors
+  risk: medium
+  tags: src:tc4dy; Elasticsearch nodes
+- template: site:{target} inurl:swagger-ui.html
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Swagger UI
+- template: site:{target} inurl:swagger-ui
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Swagger interfaces
+- template: site:{target} inurl:/api-docs
+  category: panels
+  risk: medium
+  tags: src:tc4dy; API documentation
+- template: site:{target} inurl:/api/docs
+  category: panels
+  risk: medium
+  tags: src:tc4dy; API docs
+- template: site:{target} inurl:/api/v1
+  category: panels
+  risk: medium
+  tags: src:tc4dy; API v1 endpoints
+- template: site:{target} inurl:/api/v2
+  category: panels
+  risk: medium
+  tags: src:tc4dy; API v2 endpoints
+- template: site:{target} inurl:/api/v3
+  category: panels
+  risk: medium
+  tags: src:tc4dy; API v3 endpoints
+- template: site:{target} filetype:json intext:swagger
+  category: panels
+  risk: medium
+  tags: src:tc4dy; OpenAPI JSON specs
+- template: site:{target} filetype:yaml intext:swagger
+  category: panels
+  risk: medium
+  tags: src:tc4dy; OpenAPI YAML specs
+- template: site:{target} filetype:json intext:openapi
+  category: panels
+  risk: medium
+  tags: src:tc4dy; OpenAPI 3.0 specs
+- template: site:{target} filetype:json intext:postman
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Postman collections
+- template: site:{target} inurl:graphql
+  category: panels
+  risk: medium
+  tags: src:tc4dy; GraphQL endpoints
+- template: site:{target} inurl:graphiql
+  category: panels
+  risk: medium
+  tags: src:tc4dy; GraphiQL explorer
+- template: site:{target} inurl:wsdl
+  category: panels
+  risk: medium
+  tags: src:tc4dy; SOAP WSDL files
+- template: site:{target} filetype:wsdl
+  category: panels
+  risk: medium
+  tags: src:tc4dy; WSDL files
+- template: site:{target} inurl:odata
+  category: panels
+  risk: medium
+  tags: src:tc4dy; OData endpoints
+- template: site:{target} inurl:/rest/api
+  category: panels
+  risk: medium
+  tags: src:tc4dy; REST API paths
+- template: site:{target} inurl:webhook
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Webhook endpoints
+- template: site:{target} intitle:"ReDoc"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; ReDoc API docs
+- template: site:{target} intitle:"API Reference"
+  category: panels
+  risk: medium
+  tags: src:tc4dy; API reference pages
+- template: site:{target} intext:"application/json" inurl:api
+  category: panels
+  risk: medium
+  tags: src:tc4dy; JSON API responses
+- template: site:{target} intext:"Bearer" filetype:json
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Bearer auth JSON
+- template: site:{target} inurl:/v1/keys
+  category: panels
+  risk: medium
+  tags: src:tc4dy; API key endpoints
+- template: site:{target} inurl:/v1/users
+  category: panels
+  risk: medium
+  tags: src:tc4dy; User API endpoints
+- template: site:{target} inurl:/v1/admin
+  category: panels
+  risk: medium
+  tags: src:tc4dy; Admin API endpoints
+- template: site:{target}
+  category: cloud
+  risk: high
+  tags: src:tc4dy; AWS S3 buckets
+- template: site:{target} inurl:storage.googleapis.com
+  category: cloud
+  risk: high
+  tags: src:tc4dy; GCS files
+- template: site:{target} inurl:blob.core.windows.net
+  category: cloud
+  risk: high
+  tags: src:tc4dy; Azure blob files
+- template: site:{target} intext:"s3.amazonaws.com" intext:password
+  category: cloud
+  risk: high
+  tags: src:tc4dy; S3 URL with password
+- template: site:{target} intext:"bucket_name"
+  category: cloud
+  risk: high
+  tags: src:tc4dy; S3 bucket names
+- template: site:{target} intext:"azure_storage"
+  category: cloud
+  risk: high
+  tags: src:tc4dy; Azure storage keys
+- template: site:{target} intext:"gcs_bucket"
+  category: cloud
+  risk: high
+  tags: src:tc4dy; GCS bucket configs
+- template: site:{target} intext:"CloudFront"
+  category: cloud
+  risk: high
+  tags: src:tc4dy; CloudFront configs
+- template: site:{target} intext:"DO_SPACES_KEY"
+  category: cloud
+  risk: high
+  tags: src:tc4dy; DigitalOcean Spaces
+- template: site:{target} intext:"WASABI_ACCESS_KEY"
+  category: cloud
+  risk: high
+  tags: src:tc4dy; Wasabi storage keys
+- template: site:{target} intext:"B2_APPLICATION_KEY"
+  category: cloud
+  risk: high
+  tags: src:tc4dy; Backblaze B2 keys
+- template: site:{target} intext:"R2_ACCESS_KEY"
+  category: cloud
+  risk: high
+  tags: src:tc4dy; Cloudflare R2 keys
+- template: site:{target} filetype:txt intext:CVE-202
+  category: misc
+  risk: low
+  tags: src:tc4dy; CVE text files
+- template: site:{target} filetype:pdf intext:Nessus
+  category: misc
+  risk: low
+  tags: src:tc4dy; Nessus scan reports
+- template: site:{target} filetype:pdf intext:OpenVAS
+  category: misc
+  risk: low
+  tags: src:tc4dy; OpenVAS reports
+- template: site:{target} filetype:pdf intext:"penetration test"
+  category: misc
+  risk: low
+  tags: src:tc4dy; Pentest reports
+- template: site:{target} filetype:pdf intext:"vulnerability scan"
+  category: misc
+  risk: low
+  tags: src:tc4dy; Vuln scan reports
+- template: site:{target} filetype:pdf intext:"security audit"
+  category: misc
+  risk: low
+  tags: src:tc4dy; Security audits
+- template: site:{target} filetype:pdf intext:OWASP
+  category: misc
+  risk: low
+  tags: src:tc4dy; OWASP documents
+- template: site:{target} filetype:pdf intext:"risk assessment"
+  category: misc
+  risk: low
+  tags: src:tc4dy; Risk assessments
+- template: site:{target} filetype:pdf intext:"threat model"
+  category: misc
+  risk: low
+  tags: src:tc4dy; Threat models
+- template: site:{target} filetype:txt intext:"proof of concept"
+  category: misc
+  risk: low
+  tags: src:tc4dy; PoC files
+- template: site:{target} inurl:burp
+  category: misc
+  risk: low
+  tags: src:tc4dy; Burp Suite reports
+- template: site:{target} intitle:"Shodan"
+  category: misc
+  risk: low
+  tags: src:tc4dy; Shodan-related pages
+- template: site:{target} inurl:nmap
+  category: misc
+  risk: low
+  tags: src:tc4dy; Nmap output files
+- template: site:{target} filetype:xml intext:nmap
+  category: misc
+  risk: low
+  tags: src:tc4dy; Nmap XML output
+- template: site:{target} intext:"sqlmap"
+  category: misc
+  risk: low
+  tags: src:tc4dy; SQLmap output
+- template: site:{target} intext:"metasploit"
+  category: misc
+  risk: low
+  tags: src:tc4dy; Metasploit outputs
+- template: site:{target} intext:"nikto"
+  category: misc
+  risk: low
+  tags: src:tc4dy; Nikto scan results
+- template: site:{target} intext:"hydra"
+  category: misc
+  risk: low
+  tags: src:tc4dy; Hydra outputs
+- template: site:{target} filetype:pdf intext:"red team"
+  category: misc
+  risk: low
+  tags: src:tc4dy; Red team reports
+- template: site:{target} filetype:pdf intext:"blue team"
+  category: misc
+  risk: low
+  tags: src:tc4dy; Blue team reports
+- template: site:{target} filetype:pdf intext:"SOC report"
+  category: misc
+  risk: low
+  tags: src:tc4dy; SOC 2 reports
+- template: site:{target} filetype:pdf intext:"ISO 27001"
+  category: misc
+  risk: low
+  tags: src:tc4dy; ISO 27001 docs
+- template: site:{target} filetype:pdf intext:"PCI DSS"
+  category: misc
+  risk: low
+  tags: src:tc4dy; PCI DSS docs
+- template: site:{target} filetype:pdf intext:"NIST"
+  category: misc
+  risk: low
+  tags: src:tc4dy; NIST framework docs
+- template: site:{target} inurl:wp-content
+  category: config
+  risk: medium
+  tags: src:tc4dy; WordPress sites
+- template: site:{target} inurl:wp-login.php
+  category: config
+  risk: medium
+  tags: src:tc4dy; WordPress login
+- template: site:{target} intext:"Powered by WordPress"
+  category: config
+  risk: medium
+  tags: src:tc4dy; WordPress-powered
+- template: site:{target} intext:"WordPress" intext:"version"
+  category: config
+  risk: medium
+  tags: src:tc4dy; WordPress version
+- template: site:{target} inurl:joomla
+  category: config
+  risk: medium
+  tags: src:tc4dy; Joomla sites
+- template: site:{target} inurl:administrator intext:Joomla
+  category: config
+  risk: medium
+  tags: src:tc4dy; Joomla admin
+- template: site:{target} intext:"Powered by Joomla"
+  category: config
+  risk: medium
+  tags: src:tc4dy; Joomla-powered
+- template: site:{target} intext:"Powered by Drupal"
+  category: config
+  risk: medium
+  tags: src:tc4dy; Drupal-powered
+- template: site:{target} inurl:user/login intext:Drupal
+  category: config
+  risk: medium
+  tags: src:tc4dy; Drupal login
+- template: site:{target} intext:"Powered by TYPO3"
+  category: config
+  risk: medium
+  tags: src:tc4dy; TYPO3 sites
+- template: site:{target} intext:"Powered by vBulletin"
+  category: config
+  risk: medium
+  tags: src:tc4dy; vBulletin forums
+- template: site:{target} intext:"Powered by phpBB"
+  category: config
+  risk: medium
+  tags: src:tc4dy; phpBB forums
+- template: site:{target} intext:"Powered by Discourse"
+  category: config
+  risk: medium
+  tags: src:tc4dy; Discourse forums
+- template: site:{target} intext:"Powered by Ghost"
+  category: config
+  risk: medium
+  tags: src:tc4dy; Ghost CMS
+- template: site:{target} intext:"Powered by Craft CMS"
+  category: config
+  risk: medium
+  tags: src:tc4dy; Craft CMS
+- template: site:{target} intext:"Powered by Umbraco"
+  category: config
+  risk: medium
+  tags: src:tc4dy; Umbraco CMS
+- template: site:{target} intext:"Built with Django"
+  category: config
+  risk: medium
+  tags: src:tc4dy; Django sites
+- template: site:{target} intext:"Powered by Laravel"
+  category: config
+  risk: medium
+  tags: src:tc4dy; Laravel sites
+- template: site:{target} intext:"Ruby on Rails"
+  category: config
+  risk: medium
+  tags: src:tc4dy; Rails sites
+- template: site:{target} intext:"ASP.NET"
+  category: config
+  risk: medium
+  tags: src:tc4dy; ASP.NET sites
+- template: site:{target} inurl:/wp-json
+  category: config
+  risk: medium
+  tags: src:tc4dy; WordPress JSON API
+- template: site:{target} inurl:?page_id=
+  category: config
+  risk: medium
+  tags: src:tc4dy; WordPress URL pattern
+- template: site:{target} inurl:?p=
+  category: config
+  risk: medium
+  tags: src:tc4dy; WordPress post URLs
+- template: site:{target} inurl:?cat=
+  category: config
+  risk: medium
+  tags: src:tc4dy; WordPress category URLs
+- template: site:{target} inurl:index.php?option=com_
+  category: config
+  risk: medium
+  tags: src:tc4dy; Joomla component URLs
+- template: inurl:node/ site:{target}
+  category: config
+  risk: medium
+  tags: src:tc4dy; Drupal node URLs
+- template: site:{target} intext:"Generator" intext:"WordPress"
+  category: config
+  risk: medium
+  tags: src:tc4dy; WP meta generator
+- template: site:{target} intext:"generator" intext:"Joomla"
+  category: config
+  risk: medium
+  tags: src:tc4dy; Joomla meta generator
