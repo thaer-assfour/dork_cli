@@ -211,15 +211,15 @@ dorks:
   tags: src:proviesec
 - template: site:{target} intitle:"Index of" "config"
   category: exposure
-  risk: medium
+  risk: high
   tags: src:proviesec
 - template: site:{target} intitle:"Index of" "backup"
   category: exposure
-  risk: medium
+  risk: high
   tags: src:proviesec
 - template: site:{target} intitle:"Index of" ".git"
   category: exposure
-  risk: medium
+  risk: high
   tags: src:proviesec
 - template: site:{target} inurl:.git/config
   category: vcs
@@ -247,7 +247,7 @@ dorks:
   tags: src:proviesec
 - template: site:{target} inurl:Makefile.toml
   category: config
-  risk: medium
+  risk: low
   tags: src:proviesec
 - template: site:{target} inurl:docker-compose.yml
   category: config
@@ -255,11 +255,11 @@ dorks:
   tags: src:proviesec
 - template: site:{target} filetype:yml password
   category: config
-  risk: medium
+  risk: high
   tags: src:proviesec
 - template: site:{target} filetype:yaml secret
   category: config
-  risk: medium
+  risk: high
   tags: src:proviesec
 - template: site:{target} filetype:env "DB_PASSWORD"
   category: secrets
@@ -299,163 +299,91 @@ dorks:
   tags: src:proviesec
 - template: site:{target} filetype:txt intext:password
   category: config
-  risk: medium
+  risk: high
   tags: src:tc4dy; TXT with passwords
 - template: site:{target} filetype:txt intext:credentials
   category: config
-  risk: medium
+  risk: high
   tags: src:tc4dy; Credential files
-- template: site:{target} filetype:txt intext:username
-  category: config
-  risk: medium
-  tags: src:tc4dy; Username+password TXT
 - template: site:{target} filetype:txt intext:"admin password"
   category: config
-  risk: medium
+  risk: high
   tags: src:tc4dy; Admin credentials
 - template: site:{target} filetype:txt intext:"root password"
   category: config
-  risk: medium
+  risk: high
   tags: src:tc4dy; Root passwords
 - template: site:{target} filetype:txt intext:"ftp password"
   category: config
-  risk: medium
+  risk: high
   tags: src:tc4dy; FTP passwords
 - template: site:{target} filetype:txt intext:"email password"
   category: config
-  risk: medium
+  risk: high
   tags: src:tc4dy; Email passwords
 - template: site:{target} filetype:txt intext:"db password"
   category: config
-  risk: medium
+  risk: high
   tags: src:tc4dy; DB passwords
 - template: site:{target} filetype:txt intext:api_key
   category: config
-  risk: medium
+  risk: high
   tags: src:tc4dy; API keys in text
 - template: site:{target} filetype:txt intext:secret_key
   category: config
-  risk: medium
+  risk: high
   tags: src:tc4dy; Secret keys
 - template: site:{target} filetype:txt intext:access_token
   category: config
-  risk: medium
+  risk: high
   tags: src:tc4dy; Access tokens
 - template: site:{target} filetype:txt intext:private_key
   category: config
-  risk: medium
+  risk: high
   tags: src:tc4dy; Private keys
-- template: site:{target} filetype:txt intext:socks
-  category: config
-  risk: medium
-  tags: src:tc4dy; SOCKS proxy lists
-- template: site:{target} filetype:txt intext:"http proxy"
-  category: config
-  risk: medium
-  tags: src:tc4dy; HTTP proxy lists
-- template: site:{target} filetype:txt intext:ssh
-  category: config
-  risk: medium
-  tags: src:tc4dy; SSH credentials
-- template: site:{target} filetype:txt intext:mysql
-  category: config
-  risk: medium
-  tags: src:tc4dy; MySQL credentials
-- template: site:{target} filetype:txt intext:smtp
-  category: config
-  risk: medium
-  tags: src:tc4dy; SMTP credentials
-- template: site:{target} filetype:txt intext:hosts
-  category: config
-  risk: medium
-  tags: src:tc4dy; Hosts files
-- template: site:{target} filetype:txt intext:ip
-  category: config
-  risk: medium
-  tags: src:tc4dy; IP address lists
-- template: site:{target} filetype:txt intext:wordlist
-  category: config
-  risk: medium
-  tags: src:tc4dy; Password wordlists
-- template: site:{target} filetype:txt intext:hash
-  category: config
-  risk: medium
-  tags: src:tc4dy; Hash files
-- template: site:{target} filetype:txt intext:credit
-  category: config
-  risk: medium
-  tags: src:tc4dy; Credit card TXTs
-- template: site:{target} filetype:txt intext:ssn
-  category: config
-  risk: medium
-  tags: src:tc4dy; SSN text files
 - template: site:{target} filetype:txt intext:token
   category: config
-  risk: medium
+  risk: high
   tags: src:tc4dy; Token files
-- template: site:{target} filetype:txt intext:exploit
-  category: config
-  risk: medium
-  tags: src:tc4dy; Exploit notes
-- template: site:{target} filetype:txt intext:CVE
-  category: config
-  risk: medium
-  tags: src:tc4dy; CVE information
-- template: site:{target} filetype:txt intext:"account number"
-  category: config
-  risk: medium
-  tags: src:tc4dy; Account numbers
-- template: site:{target} filetype:txt intext:backup
-  category: config
-  risk: medium
-  tags: src:tc4dy; Backup credentials
-- template: site:{target} filetype:txt intext:server
-  category: config
-  risk: medium
-  tags: src:tc4dy; Server lists
-- template: site:{target} filetype:txt intext:admin
-  category: config
-  risk: medium
-  tags: src:tc4dy; Admin user lists
 - template: site:{target} filetype:ini intext:password
   category: config
-  risk: medium
+  risk: high
   tags: src:tc4dy; INI file passwords
 - template: site:{target} filetype:cfg intext:password
   category: config
-  risk: medium
+  risk: high
   tags: src:tc4dy; CFG file passwords
 - template: site:{target} filetype:conf intext:password
   category: config
-  risk: medium
+  risk: high
   tags: src:tc4dy; CONF passwords
 - template: site:{target} filetype:inf intext:password
   category: config
-  risk: medium
+  risk: high
   tags: src:tc4dy; INF passwords
 - template: site:{target} filetype:properties intext:password
   category: config
-  risk: medium
+  risk: high
   tags: src:tc4dy; Properties passwords
 - template: site:{target} filetype:xml intext:password
   category: config
-  risk: medium
+  risk: high
   tags: src:tc4dy; XML passwords
 - template: site:{target} filetype:yaml intext:password
   category: config
-  risk: medium
+  risk: high
   tags: src:tc4dy; YAML passwords
 - template: site:{target} filetype:yml intext:password
   category: config
-  risk: medium
+  risk: high
   tags: src:tc4dy; YML passwords
 - template: site:{target} filetype:json intext:password
   category: config
-  risk: medium
+  risk: high
   tags: src:tc4dy; JSON passwords
 - template: site:{target} filetype:toml intext:password
   category: config
-  risk: medium
+  risk: high
   tags: src:tc4dy; TOML passwords
 - template: site:{target} filetype:bak
   category: files
@@ -1437,18 +1365,6 @@ dorks:
   category: exposure
   risk: medium
   tags: src:tc4dy; Edu open directories
-- template: site:{target} intitle:"index of" apache
-  category: exposure
-  risk: medium
-  tags: src:tc4dy; Apache listings
-- template: site:{target} intitle:"index of" nginx
-  category: exposure
-  risk: medium
-  tags: src:tc4dy; Nginx listings
-- template: site:{target} intitle:"index of" iis
-  category: exposure
-  risk: medium
-  tags: src:tc4dy; IIS listings
 - template: site:{target} intitle:"autoindex"
   category: exposure
   risk: medium
@@ -1461,57 +1377,33 @@ dorks:
   category: exposure
   risk: medium
   tags: src:tc4dy; Files directories
-- template: site:{target} intitle:"index of" images
-  category: exposure
-  risk: medium
-  tags: src:tc4dy; Image directories
-- template: site:{target} intitle:"index of" media
-  category: exposure
-  risk: medium
-  tags: src:tc4dy; Media directories
-- template: site:{target} intitle:"index of" documents
-  category: exposure
-  risk: medium
-  tags: src:tc4dy; Document directories
-- template: site:{target} intitle:"index of" downloads
-  category: exposure
-  risk: medium
-  tags: src:tc4dy; Download directories
-- template: site:{target} intitle:"index of" assets
-  category: exposure
-  risk: medium
-  tags: src:tc4dy; Asset directories
-- template: site:{target} intitle:"index of" public
-  category: exposure
-  risk: medium
-  tags: src:tc4dy; Public directories
 - template: site:{target} intitle:"index of" private
   category: exposure
-  risk: medium
+  risk: high
   tags: src:tc4dy; Private directories
 - template: site:{target} intitle:"index of" config
   category: exposure
-  risk: medium
+  risk: high
   tags: src:tc4dy; Config directories
 - template: site:{target} intitle:"index of" settings
   category: exposure
-  risk: medium
+  risk: high
   tags: src:tc4dy; Settings directories
 - template: site:{target} intitle:"index of" conf
   category: exposure
-  risk: medium
+  risk: high
   tags: src:tc4dy; Conf directories
 - template: site:{target} intitle:"index of" etc
   category: exposure
-  risk: medium
+  risk: high
   tags: src:tc4dy; ETC directories
 - template: site:{target} intitle:"index of" logs
   category: exposure
-  risk: medium
+  risk: high
   tags: src:tc4dy; Log directories
 - template: site:{target} intitle:"index of" log
   category: exposure
-  risk: medium
+  risk: high
   tags: src:tc4dy; Log file directories
 - template: site:{target} intitle:"index of" tmp
   category: exposure
@@ -1543,23 +1435,23 @@ dorks:
   tags: src:tc4dy; Node modules exposed
 - template: site:{target} intitle:"index of" .git
   category: exposure
-  risk: medium
+  risk: high
   tags: src:tc4dy; Git directories
 - template: site:{target} intitle:"index of" .svn
   category: exposure
-  risk: medium
+  risk: high
   tags: src:tc4dy; SVN directories
 - template: site:{target} intitle:"index of" sql
   category: exposure
-  risk: medium
+  risk: high
   tags: src:tc4dy; SQL file directories
 - template: site:{target} intitle:"index of" db
   category: exposure
-  risk: medium
+  risk: high
   tags: src:tc4dy; DB directories
 - template: site:{target} intitle:"index of" dump
   category: exposure
-  risk: medium
+  risk: high
   tags: src:tc4dy; Dump file directories
 - template: site:{target} filetype:sql intext:"INSERT INTO"
   category: files
@@ -1829,14 +1721,6 @@ dorks:
   category: vcs
   risk: high
   tags: src:tc4dy; Mercurial store
-- template: site:{target} intext:password
-  category: vcs
-  risk: high
-  tags: src:tc4dy; GitHub passwords
-- template: site:{target} intext:secret
-  category: vcs
-  risk: high
-  tags: src:tc4dy; GitHub secrets
 - template: site:{target} filetype:py intext:password
   category: vcs
   risk: high
@@ -1887,11 +1771,11 @@ dorks:
   tags: src:tc4dy; JSON tokens
 - template: site:{target} inurl:Makefile
   category: vcs
-  risk: high
+  risk: medium
   tags: src:tc4dy; Makefile credentials
 - template: site:{target} inurl:Dockerfile
   category: vcs
-  risk: high
+  risk: medium
   tags: src:tc4dy; Dockerfile secrets
 - template: site:{target} filetype:php intext:phpinfo()
   category: errors
@@ -2105,10 +1989,6 @@ dorks:
   category: panels
   risk: medium
   tags: src:tc4dy; Admin API endpoints
-- template: site:{target}
-  category: cloud
-  risk: high
-  tags: src:tc4dy; AWS S3 buckets
 - template: site:{target} inurl:storage.googleapis.com
   category: cloud
   risk: high
@@ -2133,10 +2013,6 @@ dorks:
   category: cloud
   risk: high
   tags: src:tc4dy; GCS bucket configs
-- template: site:{target} intext:"CloudFront"
-  category: cloud
-  risk: high
-  tags: src:tc4dy; CloudFront configs
 - template: site:{target} intext:"DO_SPACES_KEY"
   category: cloud
   risk: high
@@ -2171,15 +2047,15 @@ dorks:
   tags: src:tc4dy; PoC files
 - template: site:{target} inurl:wp-content
   category: config
-  risk: medium
+  risk: low
   tags: src:tc4dy; WordPress sites
 - template: site:{target} inurl:wp-login.php
   category: config
-  risk: medium
+  risk: low
   tags: src:tc4dy; WordPress login
 - template: site:{target} intext:"Powered by WordPress"
   category: config
-  risk: medium
+  risk: low
   tags: src:tc4dy; WordPress-powered
 - template: site:{target} intext:"WordPress" intext:"version"
   category: config
@@ -2187,97 +2063,97 @@ dorks:
   tags: src:tc4dy; WordPress version
 - template: site:{target} inurl:joomla
   category: config
-  risk: medium
+  risk: low
   tags: src:tc4dy; Joomla sites
 - template: site:{target} inurl:administrator intext:Joomla
   category: config
-  risk: medium
+  risk: low
   tags: src:tc4dy; Joomla admin
 - template: site:{target} intext:"Powered by Joomla"
   category: config
-  risk: medium
+  risk: low
   tags: src:tc4dy; Joomla-powered
 - template: site:{target} intext:"Powered by Drupal"
   category: config
-  risk: medium
+  risk: low
   tags: src:tc4dy; Drupal-powered
 - template: site:{target} inurl:user/login intext:Drupal
   category: config
-  risk: medium
+  risk: low
   tags: src:tc4dy; Drupal login
 - template: site:{target} intext:"Powered by TYPO3"
   category: config
-  risk: medium
+  risk: low
   tags: src:tc4dy; TYPO3 sites
 - template: site:{target} intext:"Powered by vBulletin"
   category: config
-  risk: medium
+  risk: low
   tags: src:tc4dy; vBulletin forums
 - template: site:{target} intext:"Powered by phpBB"
   category: config
-  risk: medium
+  risk: low
   tags: src:tc4dy; phpBB forums
 - template: site:{target} intext:"Powered by Discourse"
   category: config
-  risk: medium
+  risk: low
   tags: src:tc4dy; Discourse forums
 - template: site:{target} intext:"Powered by Ghost"
   category: config
-  risk: medium
+  risk: low
   tags: src:tc4dy; Ghost CMS
 - template: site:{target} intext:"Powered by Craft CMS"
   category: config
-  risk: medium
+  risk: low
   tags: src:tc4dy; Craft CMS
 - template: site:{target} intext:"Powered by Umbraco"
   category: config
-  risk: medium
+  risk: low
   tags: src:tc4dy; Umbraco CMS
 - template: site:{target} intext:"Built with Django"
   category: config
-  risk: medium
+  risk: low
   tags: src:tc4dy; Django sites
 - template: site:{target} intext:"Powered by Laravel"
   category: config
-  risk: medium
+  risk: low
   tags: src:tc4dy; Laravel sites
 - template: site:{target} intext:"Ruby on Rails"
   category: config
-  risk: medium
+  risk: low
   tags: src:tc4dy; Rails sites
 - template: site:{target} intext:"ASP.NET"
   category: config
-  risk: medium
+  risk: low
   tags: src:tc4dy; ASP.NET sites
 - template: site:{target} inurl:/wp-json
   category: config
-  risk: medium
+  risk: low
   tags: src:tc4dy; WordPress JSON API
 - template: site:{target} inurl:?page_id=
   category: config
-  risk: medium
+  risk: low
   tags: src:tc4dy; WordPress URL pattern
 - template: site:{target} inurl:?p=
   category: config
-  risk: medium
+  risk: low
   tags: src:tc4dy; WordPress post URLs
 - template: site:{target} inurl:?cat=
   category: config
-  risk: medium
+  risk: low
   tags: src:tc4dy; WordPress category URLs
 - template: site:{target} inurl:index.php?option=com_
   category: config
-  risk: medium
+  risk: low
   tags: src:tc4dy; Joomla component URLs
 - template: inurl:node/ site:{target}
   category: config
-  risk: medium
+  risk: low
   tags: src:tc4dy; Drupal node URLs
 - template: site:{target} intext:"Generator" intext:"WordPress"
   category: config
-  risk: medium
+  risk: low
   tags: src:tc4dy; WP meta generator
 - template: site:{target} intext:"generator" intext:"Joomla"
   category: config
-  risk: medium
+  risk: low
   tags: src:tc4dy; Joomla meta generator
